@@ -1,0 +1,30 @@
+{% extends 'core/base.html' %}
+{% block title %}Contact Us | Pet Health Tracker{% endblock %}
+
+{% block content %}
+<section class="contact-section">
+    <h1>Contact Us</h1>
+    <p>If you have any questions or need help, feel free to reach out.</p>
+
+    <div class="contact-box">
+        <form>
+            <div class="form-group">
+                <label>Your Name</label>
+                <input type="text" placeholder="Enter your name">
+            </div>
+
+            <div class="form-group">
+                <label>Email</label>
+                <input type="email" placeholder="Enter your email">
+            </div>
+
+            <div class="form-group">
+                <label>Message</label>
+                <textarea rows="4" placeholder="Your message"></textarea>
+            </div>
+
+            <button type="submit" class="btn-primary">Send Message</button>
+        </form>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,69 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard | Pet Health Tracker</title>
+    <link rel="stylesheet" href="{% static 'core/css/dashboard.css' %}">
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+    <h2>🐾 Pet Health Club</h2>
+    <div class="top-actions">
+        <button class="btn">+ Create Pet Profile</button>
+        <button class="btn logout">Logout</button>
+    </div>
+</div>
+
+<div class="layout">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+        <ul>
+            <li class="active">📊Dashboard</li>
+            <li>🐶My Pets</li>
+            <li>💊Medications</li>
+            <li>📁Health Records</li>
+            <li>📅Appointments</li>
+            <li>👩‍🦰My Profile</li>
+        </ul>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="content">
+
+        <!-- WELCOME -->
+        <div class="welcome">
+            <h3>Hello, User 👋</h3>
+            <p>Welcome back!</p>
+        </div>
+
+        <!-- ACTIVITY CARDS -->
+        <div class="stats">
+            <div class="card">🐶<br><strong>2</strong><span>Pets</span></div>
+            <div class="card">📅<br><strong>2</strong><span>Appointments</span></div>
+            <div class="card">💊<br><strong>1</strong><span>Medications</span></div>
+            <div class="card">💉<br><strong>2</strong><span>Vaccinations</span></div>
+        </div>
+
+        <!-- QUICK ACTIONS CARD -->
+        <div class="quick-actions">
+            <h3>Quick Actions</h3>
+
+            <div class="action-buttons">
+                <button>📁+ Add Health Record</button>
+                <button>💊+ Add Medication</button>
+                <button>📅+ Schedule Appointment</button>
+                <button>🐶+ Add New Pet</button>
+            </div>
+
+            
+        </div>
+
+    </main>
+</div>
+
+</body>
+</html>

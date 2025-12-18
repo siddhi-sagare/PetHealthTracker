@@ -1,0 +1,43 @@
+{% extends 'core/base.html' %}
+{% load static %} 
+{% block content %}
+<section class="landing">
+    <div class="landing-left">
+        <h1>Track Your Pet's Health Easily</h1>
+        <p>Keep vaccinations, appointments, and health records all in one place.</p>
+        <div class="feature-cards">
+            <div class="card">
+                <h1 style="font-size:20px">Vaccination Tracker</h1>
+                <p>Never miss a vaccination with organized schedules and reminders.</p>
+            </div>
+            <div class="card">
+                <h1 style="font-size:20px">Health Records</h1>
+                <p>Store vet visits, treatments, and medical history securely.</p>
+            </div>
+            <div class="card">
+                <h1 style="font-size:20px">User Dashboard</h1>
+                <p>Access all pet information from a clean, simple dashboard.</p>
+            </div>
+        </div>
+    </div>
+    <div class="landing-right">
+        <img src="{% static 'core/images/petimg.jpg' %}" alt="Pet Image">
+    </div>
+</section>
+
+<section class="reviews">
+    <h2>User Reviews</h2>
+    <div class="review-container">
+        <button class="arrow left-arrow">&#8592;</button>
+        <div class="review-slider">
+            <div class="slide">Great app! Keeps all my pets organized.</div>
+            <div class="slide">Never missed a vaccination thanks to this tracker.</div>
+            <div class="slide">Easy to manage multiple pets in one place.</div>
+            <div class="slide">Helpful reminders for vet visits!</div>
+            <div class="slide">Love the clean interface.</div>
+            <div class="slide">Highly recommend to all pet owners.</div>
+        </div>
+        <button class="arrow right-arrow">&#8594;</button>
+    </div>
+</section>
+{% endblock %}

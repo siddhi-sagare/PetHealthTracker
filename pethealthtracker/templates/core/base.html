@@ -1,0 +1,40 @@
+{% load static %} 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Pet Health Tracker{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'core/css/style.css' %}">
+    <script src="{% static 'core/js/script.js' %}" defer></script>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+    <div class="logo">🐾 Pet Health Club</div>
+    <div class="nav-links">
+        <button><a href="{% url 'home' %}" class="btn">Home</a></button>
+        <button><a href="{% url 'features' %}" class="btn">Features</a>
+</button>
+        <button><a href="{% url 'how_it_works' %}" class="btn">How it works</a></button>
+        <button><a href="{% url 'contact' %}">Contact Us</a></button>
+    </div>
+    <div class="auth-buttons">
+        <button class="login-btn"><a href="{% url 'login' %}" class="nav-btn login-btn">Login</a></button>
+        <button class="register-btn"><a href="{% url 'register' %}">Register</a></button>
+    </div>
+</nav>
+
+<!-- MAIN CONTENT -->
+<div class="main-container">
+    {% block content %}{% endblock %}
+</div>
+
+<!-- FOOTER -->
+<footer>
+    <p>© 2025 Pet Health Club | All Rights Reserved.</p>
+</footer>
+
+</body>
+</html>

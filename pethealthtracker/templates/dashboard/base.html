@@ -17,7 +17,7 @@
     <div class="top-actions">
         {% block top_actions %}
         <a href="#" class="btn-outline">+ Create Pet Profile</a>
-        <a href="#" class="btn-outline">Logout</a>
+        <a href="{% url 'login' %}" class="btn-outline">Logout</a>
         {% endblock %}
     </div>
 </header>

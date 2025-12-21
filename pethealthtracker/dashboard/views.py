@@ -1,5 +1,9 @@
+# from django.shortcuts import redirect, render
 from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
 
-# Create your views here.
-def dashboard_home(request):
-    return render(request, 'dashboard/index.html' )
+
+@login_required(login_url="login")
+def dashboard_view(request):
+    return render(request, "dashboard/index.html")
+

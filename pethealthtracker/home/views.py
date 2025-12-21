@@ -1,6 +1,9 @@
 from django.shortcuts import render
 
-# Create your views here.
+
+
+
+
 def index(request):
     return render(request, 'home/index.html')
 
@@ -13,8 +16,9 @@ def how_it_works(request):
 def contact(request):
     return render(request, 'home/contact.html')
 
-def login(request):
+def login_view(request):
     return render(request, 'home/login.html')
 
-def register(request):
+def register_view(request):
     return render(request, 'home/register.html')
+

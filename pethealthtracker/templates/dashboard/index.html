@@ -1,69 +1,48 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Dashboard | Pet Health Tracker</title>
-    <link rel="stylesheet" href="{% static 'core/css/dashboard.css' %}">
-</head>
-<body>
+{% extends "dashboard/base.html" %}
+{% block title %}Dashboard{% endblock %}
 
-<!-- TOP BAR -->
-<div class="topbar">
-    <h2>🐾 Pet Health Club</h2>
-    <div class="top-actions">
-        <button class="btn">+ Create Pet Profile</button>
-        <button class="btn logout">Logout</button>
+{% block content %}
+
+<!-- WELCOME -->
+<div class="card welcome-card">
+    <h2>Hello, User 👋</h2>
+    <p>Welcome back!</p>
+</div>
+
+<!-- STATS -->
+<div class="stats">
+    <div class="stat-card">
+        🐶
+        <h3>2</h3>
+        <p>Pets</p>
+    </div>
+    <div class="stat-card">
+        📅
+        <h3>2</h3>
+        <p>Appointments</p>
+    </div>
+    <div class="stat-card">
+        💊
+        <h3>1</h3>
+        <p>Medications</p>
+    </div>
+    <div class="stat-card">
+        💉
+        <h3>2</h3>
+        <p>Vaccinations</p>
     </div>
 </div>
 
-<div class="layout">
+<!-- QUICK ACTIONS -->
+<div class="card">
+    <h3>Quick Actions</h3>
 
-    <!-- SIDEBAR -->
-    <aside class="sidebar">
-        <ul>
-            <li class="active">📊Dashboard</li>
-            <li>🐶My Pets</li>
-            <li>💊Medications</li>
-            <li>📁Health Records</li>
-            <li>📅Appointments</li>
-            <li>👩‍🦰My Profile</li>
-        </ul>
-    </aside>
-
-    <!-- MAIN CONTENT -->
-    <main class="content">
-
-        <!-- WELCOME -->
-        <div class="welcome">
-            <h3>Hello, User 👋</h3>
-            <p>Welcome back!</p>
-        </div>
-
-        <!-- ACTIVITY CARDS -->
-        <div class="stats">
-            <div class="card">🐶<br><strong>2</strong><span>Pets</span></div>
-            <div class="card">📅<br><strong>2</strong><span>Appointments</span></div>
-            <div class="card">💊<br><strong>1</strong><span>Medications</span></div>
-            <div class="card">💉<br><strong>2</strong><span>Vaccinations</span></div>
-        </div>
-
-        <!-- QUICK ACTIONS CARD -->
-        <div class="quick-actions">
-            <h3>Quick Actions</h3>
-
-            <div class="action-buttons">
-                <button>📁+ Add Health Record</button>
-                <button>💊+ Add Medication</button>
-                <button>📅+ Schedule Appointment</button>
-                <button>🐶+ Add New Pet</button>
-            </div>
-
-            
-        </div>
-
-    </main>
+    <div class="actions">
+        <a href="#" class="action-btn">📁 + Add Health Record</a>
+        <a href="#" class="action-btn">💊 + Add Medication</a>
+        <a href="#" class="action-btn">📅 + Schedule Appointment</a>
+        <a href="#" class="action-btn">🐶 + Add New Pet</a>
+    </div>
 </div>
 
-</body>
-</html>
+{% endblock %}

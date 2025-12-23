@@ -27,7 +27,7 @@ def login_view(request):
 
         if user is not None:
             login(request, user)
-            return redirect("dashboard")   # ✅ redirect to dashboard
+            return redirect('dashboard:index')   # ✅ redirect to dashboard
         else:
             return render(request, "home/login.html", {
                 "error": "Invalid username or password"
@@ -36,6 +36,39 @@ def login_view(request):
     return render(request, "home/login.html")
 
 
-def register_view(request):
-    return render(request, 'home/register.html')
+# def register_view(request):
+#     return render(request, 'home/register.html')
 
+
+from django.contrib.auth.models import User
+
+def register_view(request):
+    if request.method == "POST":
+        username = request.POST.get("username")
+        email = request.POST.get("email")
+        password1 = request.POST.get("password1")
+        password2 = request.POST.get("password2")
+
+        if password1 != password2:
+            return render(request, "home/register.html", {
+                "error": "Passwords do not match"
+            })
+
+        if User.objects.filter(username=username).exists():
+            return render(request, "home/register.html", {
+                "error": "Username already exists"
+            })
+
+        # ✅ Create user
+        User.objects.create_user(
+            username=username,
+            password=password1
+        )
+
+        return redirect("login")   # ✅ Register → Login
+
+    return render(request, "home/register.html")
+
+def logout_view(request):
+    logout(request)
+    return redirect('home')

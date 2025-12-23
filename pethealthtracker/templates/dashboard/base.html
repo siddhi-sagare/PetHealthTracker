@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <title>{% block title %}Dashboard{% endblock %}</title>
     <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+    
+
 </head>
 <body>
 
@@ -26,7 +28,7 @@
 
     <!-- SIDEBAR -->
     <aside class="sidebar">
-        <a class="active" href="#">📊 Dashboard</a>
+        <a class="active" href="{% url 'dashboard:index' %}">📊 Dashboard</a>
         <a href="#">🐶 My Pets</a>
         <a href="#">💊 Medications</a>
         <a href="#">📁 Health Records</a>

@@ -1,0 +1,49 @@
+{% extends "dashboard/base.html" %}
+{% load static %}
+
+{% block title %}My Pets{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/mypets.css' %}">
+{% endblock %}
+{% block top_actions %}
+<a href="{% url 'dashboard:create_pet' %}" class="btn-outline">
+    + Add New Pet
+</a>
+<a href="{% url 'login' %}" class="btn-outline">Logout</a>
+{% endblock %}
+
+{% block content %}
+
+<h2 class="page-title">My Pets</h2>
+
+<div class="pets-grid">
+{% for pet in pets %}
+    <div class="pet-card">
+        <h3>{{ pet.name }}</h3>
+        <p><strong>Type:</strong> {{ pet.pet_type }}</p>
+        <p><strong>Breed:</strong> {{ pet.breed }}</p>
+        <p><strong>Age:</strong> {{ pet.age }} years</p>
+
+        <div class="pet-actions">
+            <a href="{% url 'dashboard:edit_pet' pet.id %}" class="btn-edit">
+                Edit
+            </a>
+
+            <form method="POST"
+                  action="{% url 'dashboard:delete_pet' pet.id %}"
+                  style="display:inline;">
+                {% csrf_token %}
+                <button type="submit" class="btn-delete">
+                    Delete
+                </button>
+            </form>
+        </div>
+    </div>
+{% empty %}
+    <p>No pets added yet.</p>
+{% endfor %}
+</div>
+
+
+{% endblock %}

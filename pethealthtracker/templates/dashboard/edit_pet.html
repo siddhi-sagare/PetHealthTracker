@@ -1,0 +1,71 @@
+{% extends "dashboard/base.html" %}
+{% load static %}
+
+{% block title %}Edit Pet{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/create_pet.css' %}">
+{% endblock %}
+
+{% block top_actions %}
+<a href="{% url 'dashboard:mypets' %}" class="btn-outline">← Back to My Pets</a>
+<a href="{% url 'login' %}" class="btn-outline">Logout</a>
+{% endblock %}
+
+{% block content %}
+
+<h2 class="page-title">Edit Pet Profile</h2>
+
+<div class="form-card">
+    <h3>Pet Details</h3>
+
+    <form method="POST">
+        {% csrf_token %}
+
+        <div class="form-group">
+            <label>Pet Name</label>
+            <input type="text" name="name" value="{{ pet.name }}" required>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group">
+                <label>Pet Type</label>
+                <select name="pet_type" required>
+                    <option value="Dog" {% if pet.pet_type == "Dog" %}selected{% endif %}>Dog</option>
+                    <option value="Cat" {% if pet.pet_type == "Cat" %}selected{% endif %}>Cat</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Breed</label>
+                <input type="text" name="breed" value="{{ pet.breed }}" required>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group">
+                <label>Age (years)</label>
+                <input type="number" name="age" value="{{ pet.age }}" required>
+            </div>
+
+            <div class="form-group">
+                <label>Gender</label>
+                <select name="gender" required>
+                    <option value="Male" {% if pet.gender == "Male" %}selected{% endif %}>Male</option>
+                    <option value="Female" {% if pet.gender == "Female" %}selected{% endif %}>Female</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Weight (kg)</label>
+            <input type="number" name="weight" value="{{ pet.weight }}" required>
+        </div>
+
+        <button type="submit" class="save-btn">
+            Update Pet
+        </button>
+    </form>
+</div>
+
+{% endblock %}

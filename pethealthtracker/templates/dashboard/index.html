@@ -1,35 +1,43 @@
 {% extends "dashboard/base.html" %}
+{% load static %}
+
 {% block title %}Dashboard{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+{% endblock %}
 
 {% block content %}
 
 <!-- WELCOME -->
 <div class="card welcome-card">
-    <h2>Hello, User 👋</h2>
-    <p>Welcome back!</p>
-    
+    {% if request.user.is_authenticated %}
+        <h2>Hello, {{ request.user.username }} 👋</h2>
+    {% else %}
+        <h2>Hello, Guest 👋</h2>
+    {% endif %}
 </div>
 
 <!-- STATS -->
 <div class="stats">
     <div class="stat-card">
         🐶
-        <h3>2</h3>
+        <h3>{{ pets_count|default:0 }}</h3>
         <p>Pets</p>
     </div>
     <div class="stat-card">
         📅
-        <h3>2</h3>
+        <h3>0</h3>
         <p>Appointments</p>
     </div>
     <div class="stat-card">
         💊
-        <h3>1</h3>
+        <h3>0</h3>
         <p>Medications</p>
     </div>
     <div class="stat-card">
         💉
-        <h3>2</h3>
+        <h3>0</h3>
         <p>Vaccinations</p>
     </div>
 </div>
@@ -42,7 +50,9 @@
         <a href="#" class="action-btn">📁 + Add Health Record</a>
         <a href="#" class="action-btn">💊 + Add Medication</a>
         <a href="#" class="action-btn">📅 + Schedule Appointment</a>
-        <a href="#" class="action-btn">🐶 + Add New Pet</a>
+        <a href="#" class="action-btn">
+            🐶 + Add New Pet
+        </a>
     </div>
 </div>
 

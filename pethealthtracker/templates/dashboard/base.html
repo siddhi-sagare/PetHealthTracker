@@ -4,9 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <title>{% block title %}Dashboard{% endblock %}</title>
-    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
-    
 
+    <!-- BASE (COMMON) CSS -->
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+
+    <!-- PAGE SPECIFIC CSS -->
+    {% block css %}{% endblock %}
 </head>
 <body>
 
@@ -18,8 +21,10 @@
 
     <div class="top-actions">
         {% block top_actions %}
-        <a href="#" class="btn-outline">+ Create Pet Profile</a>
-        <a href="{% url 'login' %}" class="btn-outline">Logout</a>
+        <a href="{% url 'dashboard:create_pet' %}" class="btn-outline">
+            + Create Pet Profile
+        </a>
+        <a href="{% url 'logout' %}" class="btn-outline">Logout</a>
         {% endblock %}
     </div>
 </header>
@@ -28,8 +33,16 @@
 
     <!-- SIDEBAR -->
     <aside class="sidebar">
-        <a class="active" href="{% url 'dashboard:index' %}">📊 Dashboard</a>
-        <a href="#">🐶 My Pets</a>
+        <a href="{% url 'dashboard:index' %}"
+           class="{% if request.path == '/dashboard/' %}active{% endif %}">
+            📊 Dashboard
+        </a>
+
+        <a href="{% url 'dashboard:mypets' %}"
+           class="{% if '/pets/' in request.path %}active{% endif %}">
+            🐶 My Pets
+        </a>
+
         <a href="#">💊 Medications</a>
         <a href="#">📁 Health Records</a>
         <a href="#">📅 Appointments</a>

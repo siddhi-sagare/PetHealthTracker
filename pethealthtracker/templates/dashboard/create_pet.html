@@ -1,0 +1,72 @@
+{% extends "dashboard/base.html" %}
+{% load static %}
+
+{% block title %}Create Pet{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/create_pet.css' %}">
+{% endblock %}
+
+{% block top_actions %}
+<a href="{% url 'dashboard:mypets' %}" class="btn-outline">← Back to My Pets</a>
+<a href="{% url 'login' %}" class="btn-outline">Logout</a>
+{% endblock %}
+
+{% block content %}
+
+<h2 class="page-title">Create Pet Profile</h2>
+
+<div class="form-card">
+    <h3>Pet Details</h3>
+
+    <form method="POST">
+    {% csrf_token %}
+        <div class="form-group">
+            <label>Pet Name</label>
+            <input type="text" name="name" placeholder="Enter pet name">
+        </div>
+
+        <div class="form-row">
+            <div class="form-group">
+                <label>Pet Type</label>
+                <select name="pet_type">
+                    <option>Select Type</option>
+                    <option>Dog</option>
+                    <option>Cat</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Breed</label>
+                <input type="text" name="breed" placeholder="Enter breed">
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group">
+                <label>Age (years)</label>
+                <input type="number" name="age" placeholder="Enter age">
+            </div>
+
+            <div class="form-group">
+                <label>Gender</label>
+                <select name="gender">
+                    <option>Select Gender</option>
+                    <option>Male</option>
+                    <option>Female</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Weight (kg)</label>
+            <input type="number" name="weight" placeholder="Enter weight">
+        </div>
+
+        <button type="submit" name="save" class="save-btn">
+            Save Pet Profile
+        </button>
+    </form>
+</div>
+
+{% endblock %}

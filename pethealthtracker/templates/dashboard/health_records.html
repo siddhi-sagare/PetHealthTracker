@@ -1,0 +1,68 @@
+{% extends "dashboard/base.html" %}
+{% load static %}
+
+{% block title %}Health Records{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/health_records.css' %}">
+{% endblock %}
+
+{% block top_actions %}
+<a href="{% url 'dashboard:add_health_record' %}" class="btn-outline">
+    + Add New Record
+</a>
+<a href="{% url 'login' %}" class="btn-outline">Logout</a>
+{% endblock %}
+
+{% block content %}
+
+<h2 class="page-title">Health Records</h2>
+
+<div class="card">
+    <table class="records-table">
+        <thead>
+            <tr>
+                <th>Pet</th>
+                <th>Event Type</th>
+                <th>Date</th>
+                <th>Description</th>
+                <th>Veterinarian</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+
+        <tbody>
+        {% for record in records %}
+            <tr>
+                <td>{{ record.pet.name }}</td>
+                <td>{{ record.event_type }}</td>
+                <td>{{ record.event_date }}</td>
+                <td>{{ record.description }}</td>
+                <td>{{ record.veterinarian }}</td>
+                <td>
+                    <a href="{% url 'dashboard:edit_health_record' record.id %}"
+                       class="btn-edit">Edit</a>
+
+                    <form method="POST"
+      action="{% url 'dashboard:delete_health_record' record.id %}"
+      style="display:inline;">
+    {% csrf_token %}
+    <button type="submit" class="btn-delete">
+        Delete
+    </button>
+</form>
+
+                </td> 
+            </tr>
+        {% empty %}
+            <tr>
+                <td colspan="6" style="text-align:center;">
+                    No health records added yet.
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}

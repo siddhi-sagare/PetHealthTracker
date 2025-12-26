@@ -30,7 +30,7 @@
                 Edit
             </a>
 
-            <form method="POST"
+           <form method="POST"
                   action="{% url 'dashboard:delete_pet' pet.id %}"
                   style="display:inline;">
                 {% csrf_token %}
@@ -38,6 +38,7 @@
                     Delete
                 </button>
             </form>
+
         </div>
     </div>
 {% empty %}

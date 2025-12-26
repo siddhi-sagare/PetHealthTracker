@@ -1,0 +1,80 @@
+{% extends "dashboard/base.html" %}
+{% load static %}
+
+{% block title %}Edit Health Record{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/create_health_record.css' %}">
+{% endblock %}
+
+{% block top_actions %}
+<a href="{% url 'dashboard:health_records' %}" class="btn-outline">
+    ← Back to Health Records
+</a>
+<a href="{% url 'login' %}" class="btn-outline">Logout</a>
+{% endblock %}
+
+{% block content %}
+
+<h2 class="page-title">Edit Health Record</h2>
+
+<div class="form-card">
+    <h3>Health Event Details</h3>
+
+    <form method="POST">
+        {% csrf_token %}
+
+        <!-- Pet -->
+        <div class="form-group">
+            <label>Pet</label>
+            <select name="pet" required>
+                {% for pet in pets %}
+                    <option value="{{ pet.id }}"
+                        {% if record.pet.id == pet.id %}selected{% endif %}>
+                        {{ pet.name }}
+                    </option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <!-- Event Type -->
+        <div class="form-group">
+            <label>Event Type</label>
+            <select name="event_type" required>
+                {% for value, label in record.EVENT_CHOICES %}
+                    <option value="{{ value }}"
+                        {% if record.event_type == value %}selected{% endif %}>
+                        {{ label }}
+                    </option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <!-- Event Date -->
+        <div class="form-group">
+            <label>Event Date</label>
+            <input type="date" name="event_date"
+                   value="{{ record.event_date|date:'Y-m-d' }}" required>
+        </div>
+
+        <!-- Description -->
+        <div class="form-group">
+            <label>Description</label>
+            <textarea name="description" rows="4" required>
+{{ record.description }}</textarea>
+        </div>
+
+        <!-- Veterinarian -->
+        <div class="form-group">
+            <label>Veterinarian / Clinic</label>
+            <input type="text" name="veterinarian"
+                   value="{{ record.veterinarian }}" required>
+        </div>
+
+        <button type="submit" class="save-btn">
+            Update Health Record
+        </button>
+    </form>
+</div>
+
+{% endblock %}

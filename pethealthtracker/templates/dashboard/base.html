@@ -44,7 +44,11 @@
         </a>
 
         <a href="#">💊 Medications</a>
-        <a href="#">📁 Health Records</a>
+        <a href="{% url 'dashboard:health_records' %}"
+   class="{% if 'health-records' in request.path %}active{% endif %}">
+   📁 Health Records
+</a>
+
         <a href="#">📅 Appointments</a>
         <a href="#">👤 My Profile</a>
     </aside>

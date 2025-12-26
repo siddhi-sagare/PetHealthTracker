@@ -1,0 +1,79 @@
+{% extends "dashboard/base.html" %}
+{% load static %}
+
+{% block title %}Add Health Record{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/create_health_record.css' %}">
+{% endblock %}
+
+{% block top_actions %}
+<a href="{% url 'dashboard:health_records' %}" class="btn-outline">
+    ← Back to Health Records
+</a>
+<a href="{% url 'login' %}" class="btn-outline">Logout</a>
+{% endblock %}
+
+{% block content %}
+
+<h2 class="page-title">Add Health Record</h2>
+
+<div class="form-card">
+    <h3>Health Event Details</h3>
+
+    <form method="POST">
+        {% csrf_token %}
+
+        <!-- Select Pet -->
+        <div class="form-group">
+            <label>Pet</label>
+            <select name="pet" required>
+                <option value="">Select Pet</option>
+                {% for pet in pets %}
+                    <option value="{{ pet.id }}">{{ pet.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <!-- Event Type -->
+        <div class="form-group">
+            <label>Event Type</label>
+            <select name="event_type" required>
+                <option value="">Select Event Type</option>
+                <option value="Vaccination">Vaccination</option>
+                <option value="Vet Visit">Vet Visit</option>
+                <option value="Injury">Injury</option>
+                <option value="Checkup">Checkup</option>
+                <option value="Other">Other</option>
+            </select>
+        </div>
+
+        <!-- Event Date -->
+        <div class="form-group">
+            <label>Event Date</label>
+            <input type="date" name="event_date" required>
+        </div>
+
+        <!-- Description -->
+        <div class="form-group">
+            <label>Description</label>
+            <textarea name="description" rows="4"
+                      placeholder="Enter details (e.g. Rabies vaccine)"
+                      required></textarea>
+        </div>
+
+        <!-- Veterinarian -->
+        <div class="form-group">
+            <label>Veterinarian / Clinic</label>
+            <input type="text" name="veterinarian"
+                   placeholder="Clinic or doctor name"
+                   required>
+        </div>
+
+        <button type="submit" class="save-btn">
+            Save Health Event
+        </button>
+    </form>
+</div>
+
+{% endblock %}

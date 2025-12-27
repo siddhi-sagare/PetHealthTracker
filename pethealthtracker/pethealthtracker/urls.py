@@ -19,11 +19,20 @@ from django.urls import include, path
 from django.contrib.auth import views as auth_views
 
 urlpatterns = [
+
+    # main admin panel:
     path('admin/', admin.site.urls),
+
+    # homeapp:
     path('', include('home.urls')), 
+
+    # dashboardapp:
     path('dashboard/', include('dashboard.urls')), 
+
+    # Provides login, logout, password reset, password change 
     path("accounts/", include("django.contrib.auth.urls")),
-    path("accounts/password/change/",auth_views.PasswordChangeView.as_view(success_url="/dashboard/profile/"),
-        name="password_change",
-        ),
+
+    # in dashboardapp in my profile page( customize password change ):
+    path("accounts/password/change/",auth_views.PasswordChangeView.as_view(success_url="/dashboard/profile/"),name="password_change",),
+
 ]

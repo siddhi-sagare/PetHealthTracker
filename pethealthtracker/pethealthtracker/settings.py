@@ -38,8 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     
-    'home',
-    'dashboard',
+    'home',   #homeapp
+    'dashboard', #dashboardapp
     
    
 ]
@@ -59,7 +59,7 @@ ROOT_URLCONF = 'pethealthtracker.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['templates'],
+        'DIRS': ['templates'],#template folder name added
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -79,7 +79,7 @@ WSGI_APPLICATION = 'pethealthtracker.wsgi.application'
 
 DATABASES = {
     'default': {
-       'ENGINE': 'django.db.backends.mysql',
+       'ENGINE': 'django.db.backends.mysql',#use MySQL for backend
         'NAME': 'dashboard_pet', #to be created in mysql
         'USER': 'root',
         'PASSWORD': 'admin',
@@ -125,12 +125,11 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [
-    (BASE_DIR / 'static'),
+    (BASE_DIR / 'static'), #static folder created
 ]
 
 
-
+# redirecting linking urls:
 LOGIN_URL = '/login/'
 LOGIN_REDIRECT_URL = '/dashboard/'
-
 PASSWORD_CHANGE_REDIRECT_URL = "/dashboard/profile/"

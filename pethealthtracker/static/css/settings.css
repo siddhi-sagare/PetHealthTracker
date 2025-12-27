@@ -1,0 +1,62 @@
+/* PAGE TITLE */
+.page-title {
+    font-size: 26px;
+    font-weight: bold;
+    margin-bottom: 25px;
+}
+
+/* SETTINGS CARD */
+.settings-card {
+    background: #ffffff;
+    max-width: 700px;
+    padding: 30px;
+    border-radius: 14px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+}
+
+/* SECTION TITLES */
+.section-title {
+    margin-top: 25px;
+    margin-bottom: 15px;
+    font-size: 18px;
+    color: #1e88e5;
+}
+
+/* SETTING ITEM */
+.setting-item {
+    background: #f5f8ff;
+    padding: 15px 18px;
+    border-radius: 10px;
+    margin-bottom: 12px;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+}
+
+/* CHECKBOX */
+.setting-item input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    margin-right: 12px;
+    cursor: pointer;
+}
+
+/* ACTION BUTTONS */
+.settings-actions {
+    margin-top: 30px;
+}
+
+.btn-primary {
+    background: #1e88e5;
+    color: white;
+    border: none;
+    padding: 12px 26px;
+    border-radius: 8px;
+    font-size: 15px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.btn-primary:hover {
+    background: #166fc2;
+}

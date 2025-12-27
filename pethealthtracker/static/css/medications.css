@@ -1,0 +1,46 @@
+.page-title {
+    font-size: 26px;
+    margin-bottom: 20px;
+}
+
+.records-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.records-table th,
+.records-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.records-table th {
+    background: #f5f7fb;
+    font-weight: bold;
+}
+
+.records-table tr:hover {
+    background: #f9f9f9;
+}
+
+/* Buttons */
+.btn-edit {
+    background: #1e88e5;
+    color: white;
+    padding: 6px 10px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 13px;
+    margin-right: 5px;
+}
+
+.btn-delete {
+    background: #e53935;
+    color: white;
+    padding: 6px 10px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    font-size: 13px;
+}

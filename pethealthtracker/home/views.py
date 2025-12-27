@@ -62,7 +62,8 @@ def register_view(request):
         # ✅ Create user
         User.objects.create_user(
             username=username,
-            password=password1
+            password=password1,
+           email=email, 
         )
 
         return redirect("login")   # ✅ Register → Login

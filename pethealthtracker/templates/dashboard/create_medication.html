@@ -1,0 +1,86 @@
+{% extends "dashboard/base.html" %}
+{% load static %}
+
+{% block title %}Add Medication{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/create_medication.css' %}">
+{% endblock %}
+
+{% block top_actions %}
+<a href="{% url 'dashboard:medications' %}" class="btn-outline">
+    ← Back to Medications
+</a>
+<a href="{% url 'login' %}" class="btn-outline">Logout</a>
+{% endblock %}
+
+{% block content %}
+
+<h2 class="page-title">Add Medication</h2>
+
+<div class="form-card">
+    <h3>Medication Details</h3>
+
+    <form method="POST">
+        {% csrf_token %}
+
+        <!-- Pet -->
+        <div class="form-group">
+            <label>Pet</label>
+            <select name="pet" required>
+                <option value="">Select Pet</option>
+                {% for pet in pets %}
+                    <option value="{{ pet.id }}">{{ pet.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <!-- Medication Name -->
+        <div class="form-group">
+            <label>Medication Name</label>
+            <input type="text" name="medication_name"
+                   placeholder="Enter medication name" required>
+        </div>
+
+        <!-- Dosage & Frequency -->
+        <div class="form-row">
+            <div class="form-group">
+                <label>Dosage</label>
+                <input type="text" name="dosage"
+                       placeholder="e.g. 5ml / 1 tablet" required>
+            </div>
+
+            <div class="form-group">
+                <label>Frequency</label>
+                <input type="text" name="frequency"
+                       placeholder="e.g. Twice a day" required>
+            </div>
+        </div>
+
+        <!-- Dates -->
+        <div class="form-row">
+            <div class="form-group">
+                <label>Start Date</label>
+                <input type="date" name="start_date" required>
+            </div>
+
+            <div class="form-group">
+                <label>End Date</label>
+                <input type="date" name="end_date">
+            </div>
+        </div>
+
+        <!-- Notes -->
+        <div class="form-group">
+            <label>Notes</label>
+            <textarea name="notes" rows="3"
+                      placeholder="Additional notes"></textarea>
+        </div>
+
+        <button type="submit" class="save-btn">
+            Save Medication
+        </button>
+    </form>
+</div>
+
+{% endblock %}

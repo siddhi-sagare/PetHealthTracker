@@ -1,0 +1,102 @@
+/* PAGE TITLE */
+.page-title {
+    font-size: 26px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #1e88e5;
+}
+
+/* PROFILE CARD */
+.profile-card {
+    background: white;
+    padding: 30px;
+    border-radius: 16px;
+    max-width: 600px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+
+/* HEADER */
+.profile-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.avatar {
+    width: 70px;
+    height: 70px;
+    background: #1e88e5;
+    color: white;
+    border-radius: 50%;
+    font-size: 32px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 20px;
+}
+
+.profile-info h3 {
+    margin: 0;
+    font-size: 22px;
+}
+
+.role {
+    color: gray;
+    font-size: 14px;
+}
+
+/* FORM */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 6px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 15px;
+}
+
+/* ACTION BUTTONS */
+.profile-actions {
+    display: flex;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.btn-primary {
+    background: #1e88e5;
+    color: white;
+    padding: 12px 22px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.btn-secondary {
+    background: #4caf50;
+    color: white;
+    padding: 12px 22px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* HOVER EFFECTS */
+.btn-primary:hover {
+    background: #1565c0;
+}
+
+.btn-secondary:hover {
+    background: #388e3c;
+}

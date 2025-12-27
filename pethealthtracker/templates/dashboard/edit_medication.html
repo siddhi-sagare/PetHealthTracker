@@ -1,0 +1,98 @@
+{% extends "dashboard/base.html" %}
+{% load static %}
+
+{% block title %}Edit Medication{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/create_medication.css' %}">
+{% endblock %}
+
+{% block top_actions %}
+<a href="{% url 'dashboard:medications' %}" class="btn-outline">
+    ← Back to Medications
+</a>
+<a href="{% url 'login' %}" class="btn-outline">Logout</a>
+{% endblock %}
+
+{% block content %}
+
+<h2 class="page-title">Edit Medication</h2>
+
+<div class="form-card">
+    <h3>Medication Details</h3>
+
+    <form method="POST">
+        {% csrf_token %}
+
+        <!-- Pet -->
+        <div class="form-group">
+            <label>Pet</label>
+            <select name="pet" required>
+                {% for pet in pets %}
+                    <option value="{{ pet.id }}"
+                        {% if medication.pet.id == pet.id %}selected{% endif %}>
+                        {{ pet.name }}
+                    </option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <!-- Medication Name -->
+        <div class="form-group">
+            <label>Medication Name</label>
+            <input type="text"
+                   name="medication_name"
+                   value="{{ medication.medication_name }}"
+                   required>
+        </div>
+
+        <!-- Dosage & Frequency -->
+        <div class="form-row">
+            <div class="form-group">
+                <label>Dosage</label>
+                <input type="text"
+                       name="dosage"
+                       value="{{ medication.dosage }}"
+                       required>
+            </div>
+
+            <div class="form-group">
+                <label>Frequency</label>
+                <input type="text"
+                       name="frequency"
+                       value="{{ medication.frequency }}"
+                       required>
+            </div>
+        </div>
+
+        <!-- Dates -->
+        <div class="form-row">
+            <div class="form-group">
+                <label>Start Date</label>
+                <input type="date"
+                       name="start_date"
+                       value="{{ medication.start_date|date:'Y-m-d' }}"
+                       required>
+            </div>
+
+            <div class="form-group">
+                <label>End Date</label>
+                <input type="date"
+                       name="end_date"
+                       value="{{ medication.end_date|date:'Y-m-d' }}">
+            </div>
+        </div>
+
+        <!-- Notes -->
+        <div class="form-group">
+            <label>Notes</label>
+            <textarea name="notes" rows="3">{{ medication.notes }}</textarea>
+        </div>
+
+        <button type="submit" class="save-btn">
+            Update Medication
+        </button>
+    </form>
+</div>
+
+{% endblock %}

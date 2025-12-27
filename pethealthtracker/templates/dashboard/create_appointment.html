@@ -1,0 +1,84 @@
+{% extends "dashboard/base.html" %}
+{% load static %}
+
+{% block title %}Add Appointment{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/create_appointment.css' %}">
+{% endblock %}
+
+{% block top_actions %}
+<a href="{% url 'dashboard:appointments' %}" class="btn-outline">
+    ← Back to Appointments
+</a>
+<a href="{% url 'login' %}" class="btn-outline">Logout</a>
+{% endblock %}
+
+{% block content %}
+
+<h2 class="page-title">Schedule Appointment</h2>
+
+<div class="form-card">
+    <h3>Appointment Details</h3>
+
+    <form method="POST">
+        {% csrf_token %}
+
+        <!-- Select Pet -->
+        <div class="form-group">
+            <label>Pet</label>
+            <select name="pet" required>
+                <option value="">Select Pet</option>
+                {% for pet in pets %}
+                    <option value="{{ pet.id }}">{{ pet.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <!-- Appointment Type -->
+        <div class="form-group">
+            <label>Appointment Type</label>
+            <select name="appointment_type" required>
+                <option value="">Select Type</option>
+                <option value="Vet Visit">Vet Visit</option>
+                <option value="Vaccination">Vaccination</option>
+                <option value="Grooming">Grooming</option>
+                <option value="Checkup">Checkup</option>
+            </select>
+        </div>
+
+        <!-- Date & Time -->
+        <div class="form-row">
+            <div class="form-group">
+                <label>Date</label>
+                <input type="date" name="appointment_date" required>
+            </div>
+
+            <div class="form-group">
+                <label>Time</label>
+                <input type="time" name="appointment_time" required>
+            </div>
+        </div>
+
+        <!-- Clinic -->
+        <div class="form-group">
+            <label>Clinic / Vet</label>
+            <input type="text" name="clinic"
+                   placeholder="Enter clinic or vet name"
+                   required>
+        </div>
+
+        <!-- Notes -->
+        <div class="form-group">
+            <label>Notes (optional)</label>
+            <textarea name="notes" rows="3"
+                      placeholder="Additional notes"></textarea>
+        </div>
+
+        <button type="submit" class="save-btn">
+            Save Appointment
+        </button>
+    </form>
+</div>
+
+{% endblock %}

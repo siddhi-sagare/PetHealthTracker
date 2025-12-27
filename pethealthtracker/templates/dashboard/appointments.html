@@ -1,0 +1,68 @@
+{% extends "dashboard/base.html" %}
+{% load static %}
+
+{% block title %}Appointments{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/appointments.css' %}">
+{% endblock %}
+
+{% block top_actions %}
+<a href="{% url 'dashboard:add_appointment' %}" class="btn-outline">
+    + Add Appointment
+</a>
+<a href="{% url 'login' %}" class="btn-outline">Logout</a>
+{% endblock %}
+
+{% block content %}
+
+<h2 class="page-title">Appointments</h2>
+
+<div class="card">
+    <table class="records-table">
+        <thead>
+            <tr>
+                <th>Pet</th>
+                <th>Type</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Clinic / Vet</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+
+        <tbody>
+        {% for appt in appointments %}
+            <tr>
+                <td>{{ appt.pet.name }}</td>
+                <td>{{ appt.appointment_type }}</td>
+                <td>{{ appt.appointment_date }}</td>
+                <td>{{ appt.appointment_time }}</td>
+                <td>{{ appt.clinic }}</td>
+                <td>{{ appt.status }}</td>
+                <td>
+                    <a href="{% url 'dashboard:edit_appointment' appt.id %}" class="btn-edit">Edit</a>
+
+                    <form method="POST"
+          action="{% url 'dashboard:delete_appointment' appt.id %}"
+          style="display:inline;">
+        {% csrf_token %}
+        <button type="submit" class="btn-delete">
+            Delete
+        </button>
+    </form>
+                </td>
+            </tr>
+        {% empty %}
+            <tr>
+                <td colspan="7" style="text-align:center;">
+                    No appointments scheduled yet.
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}

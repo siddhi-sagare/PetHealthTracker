@@ -7,40 +7,48 @@
 <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
 {% endblock %}
 
+{% block top_actions %}
+<a href="{% url 'dashboard:create_pet' %}" class="btn-outline">
+    + Create Pet Profile
+</a>
+
+<a href="{% url 'login' %}" class="btn-outline">Logout</a>
+{% endblock %}
+
 {% block content %}
 
 <!-- WELCOME -->
 <div class="card welcome-card">
-    {% if request.user.is_authenticated %}
-        <h2>Hello, {{ request.user.username }} 👋</h2>
-    {% else %}
-        <h2>Hello, Guest 👋</h2>
-    {% endif %}
+    <h2>Hello, {{ request.user.username }} 👋</h2>
 </div>
 
 <!-- STATS -->
 <div class="stats">
+
     <div class="stat-card">
         🐶
         <h3>{{ pets_count|default:0 }}</h3>
         <p>Pets</p>
     </div>
+
     <div class="stat-card">
         📅
-        <h3>0</h3>
+        <h3>{{ appointments_count|default:0 }}</h3>
         <p>Appointments</p>
     </div>
+
     <div class="stat-card">
         💊
-        <h3>0</h3>
+        <h3>{{ medications_count|default:0 }}</h3>
         <p>Medications</p>
     </div>
+
     <div class="stat-card">
         📁
         <h3>{{ health_records_count|default:0 }}</h3>
-<p>Health Records</p>
-
+        <p>Health Records</p>
     </div>
+
 </div>
 
 <!-- QUICK ACTIONS -->
@@ -48,10 +56,21 @@
     <h3>Quick Actions</h3>
 
     <div class="actions">
-        <a href="{% url 'dashboard:add_health_record' %}" class="action-btn">📁 + Add Health Record</a>
-        <a href="#" class="action-btn">💊 + Add Medication</a>
-        <a href="#" class="action-btn">📅 + Schedule Appointment</a>
-        <a href="#" class="action-btn">🐶 + Add New Pet</a>
+        <a href="{% url 'dashboard:add_health_record' %}" class="action-btn">
+            📁 + Add Health Record
+        </a>
+
+        <a href="{% url 'dashboard:add_medication' %}" class="action-btn">
+            💊 + Add Medication
+        </a>
+
+        <a href="{% url 'dashboard:add_appointment' %}" class="action-btn">
+            📅 + Schedule Appointment
+        </a>
+
+        <a href="{% url 'dashboard:create_pet' %}" class="action-btn">
+            🐶 + Add New Pet
+        </a>
     </div>
 </div>
 

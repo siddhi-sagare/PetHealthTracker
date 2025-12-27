@@ -1,0 +1,71 @@
+{% extends "dashboard/base.html" %}
+{% load static %}
+
+{% block title %}Settings{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/settings.css' %}">
+{% endblock %}
+
+{% block top_actions %}
+<a href="{% url 'dashboard:index' %}" class="btn-outline">
+    ← Back to Dashboard
+</a>
+
+<a href="{% url 'login' %}" class="btn-outline">Logout</a>
+{% endblock %}
+
+{% block content %}
+
+<h2 class="page-title">Settings</h2>
+
+<div class="settings-card">
+    <form method="POST">
+        {% csrf_token %}
+
+        <h3 class="section-title">🔔 Notifications</h3>
+
+        <div class="setting-item">
+            <label>
+                <input type="checkbox" name="email_notifications"
+                       {% if settings.email_notifications %}checked{% endif %}>
+                Email Notifications
+            </label>
+        </div>
+
+        <div class="setting-item">
+            <label>
+                <input type="checkbox" name="appointment_reminders"
+                       {% if settings.appointment_reminders %}checked{% endif %}>
+                Appointment Reminders
+            </label>
+        </div>
+
+        <div class="setting-item">
+            <label>
+                <input type="checkbox" name="medication_reminders"
+                       {% if settings.medication_reminders %}checked{% endif %}>
+                Medication Reminders
+            </label>
+        </div>
+
+        <h3 class="section-title">🎨 Preferences</h3>
+
+        <div class="setting-item">
+            <label>
+                <input type="checkbox" name="dark_mode"
+                       {% if settings.dark_mode %}checked{% endif %}>
+                Dark Mode (Coming Soon)
+            </label>
+        </div>
+
+        <div class="settings-actions">
+            <button type="submit" class="btn-primary">
+                Save Settings
+            </button>
+        </div>
+
+    </form>
+</div>
+
+{% endblock %}

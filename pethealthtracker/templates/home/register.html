@@ -1,43 +1,75 @@
 {% extends 'home/base.html' %}
+{# Extends the base template for public/home pages (navbar + footer) #}
+
 {% block title %}Register | Pet Health Tracker{% endblock %}
+{# Sets a custom page title for the Register page #}
 
 {% block content %}
+{# Main content block injected into home/base.html #}
+
 <section class="auth-section">
+    {# Wrapper section for authentication pages #}
+
     <h1>Create Account</h1>
-    
+    {# Page heading for user registration #}
 
     <div class="auth-box">
+        {# Card-style container for registration form #}
+
         <form method="POST">
-    {% csrf_token %}
-    
+            {# Uses POST method to securely submit registration data #}
+
+            {% csrf_token %}
+            {# CSRF token for protection against cross-site request forgery #}
 
             <div class="form-group">
                 <label>Username:</label>
-                <input type="text" name="username" placeholder="Username" required>
+                {# Input field for unique username #}
+                <input type="text"
+                       name="username"
+                       placeholder="Username"
+                       required>
             </div>
 
             <div class="form-group">
                 <label>Email</label>
-                <input type="email" name="email" placeholder="Enter email" required>
+                {# Input field for user email address #}
+                <input type="email"
+                       name="email"
+                       placeholder="Enter email"
+                       required>
             </div>
 
             <div class="form-group">
                 <label>Password</label>
-                <input type="password" name="password1" placeholder="Create password" required>
+                {# Input field for account password #}
+                <input type="password"
+                       name="password1"
+                       placeholder="Create password"
+                       required>
             </div>
 
             <div class="form-group">
                 <label>Confirm Password</label>
-                <input type="password" name="password2" placeholder="Confirm password" required>
+                {# Input field to confirm password matches #}
+                <input type="password"
+                       name="password2"
+                       placeholder="Confirm password"
+                       required>
             </div>
 
-            <button type="submit" class="btn-primary">Register</button>
+            {# Submit button to create new user account #}
+            <button type="submit" class="btn-primary">
+                Register
+            </button>
         </form>
 
+        {# Link for users who already have an account #}
         <p class="auth-link">
             Already have an account?
             <a href="{% url 'login' %}">Login here</a>
         </p>
     </div>
 </section>
+
 {% endblock %}

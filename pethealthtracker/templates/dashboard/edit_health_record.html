@@ -1,32 +1,51 @@
 {% extends "dashboard/base.html" %}
+{# Inherits the common dashboard layout (header, sidebar, content area) #}
+
 {% load static %}
+{# Loads static files such as CSS #}
 
 {% block title %}Edit Health Record{% endblock %}
+{# Sets the browser/page title dynamically #}
 
 {% block css %}
+{# Reuses health record form CSS for edit page #}
 <link rel="stylesheet" href="{% static 'css/create_health_record.css' %}">
 {% endblock %}
 
 {% block top_actions %}
+{# Top-right action buttons in dashboard header #}
+
 <a href="{% url 'dashboard:health_records' %}" class="btn-outline">
     ← Back to Health Records
 </a>
+{# Navigates back to health records list page #}
+
 <a href="{% url 'login' %}" class="btn-outline">Logout</a>
+{# Logs out the current user #}
 {% endblock %}
 
 {% block content %}
+{# Main content section for editing health record #}
 
 <h2 class="page-title">Edit Health Record</h2>
+{# Page heading #}
 
 <div class="form-card">
+    {# Card container for edit health record form #}
+
     <h3>Health Event Details</h3>
+    {# Section heading inside the form card #}
 
     <form method="POST">
+        {# Uses POST method to update health record securely #}
+
         {% csrf_token %}
+        {# CSRF token for protection against cross-site request forgery #}
 
         <!-- Pet -->
         <div class="form-group">
             <label>Pet</label>
+            {# Dropdown to select pet (current pet is pre-selected) #}
             <select name="pet" required>
                 {% for pet in pets %}
                     <option value="{{ pet.id }}"
@@ -40,6 +59,7 @@
         <!-- Event Type -->
         <div class="form-group">
             <label>Event Type</label>
+            {# Dropdown populated from model EVENT_CHOICES #}
             <select name="event_type" required>
                 {% for value, label in record.EVENT_CHOICES %}
                     <option value="{{ value }}"
@@ -53,6 +73,7 @@
         <!-- Event Date -->
         <div class="form-group">
             <label>Event Date</label>
+            {# Date input pre-filled with existing event date #}
             <input type="date" name="event_date"
                    value="{{ record.event_date|date:'Y-m-d' }}" required>
         </div>
@@ -60,6 +81,7 @@
         <!-- Description -->
         <div class="form-group">
             <label>Description</label>
+            {# Textarea pre-filled with existing event description #}
             <textarea name="description" rows="4" required>
 {{ record.description }}</textarea>
         </div>
@@ -67,10 +89,12 @@
         <!-- Veterinarian -->
         <div class="form-group">
             <label>Veterinarian / Clinic</label>
+            {# Input field pre-filled with clinic/vet name #}
             <input type="text" name="veterinarian"
                    value="{{ record.veterinarian }}" required>
         </div>
 
+        {# Submit button to update health record #}
         <button type="submit" class="save-btn">
             Update Health Record
         </button>

@@ -1,34 +1,61 @@
 {% extends "dashboard/base.html" %}
+{# Inherits the common dashboard layout (top bar, sidebar, content area) #}
+
 {% load static %}
+{# Loads static files like CSS, images, JS #}
 
 {% block title %}Create Pet{% endblock %}
+{# Sets the browser/page title #}
 
 {% block css %}
+{# Page-specific CSS for create pet form #}
 <link rel="stylesheet" href="{% static 'css/create_pet.css' %}">
 {% endblock %}
 
 {% block top_actions %}
-<a href="{% url 'dashboard:mypets' %}" class="btn-outline">← Back to My Pets</a>
+{# Top-right action buttons in dashboard header #}
+
+<a href="{% url 'dashboard:mypets' %}" class="btn-outline">
+    ← Back to My Pets
+</a>
+{# Navigates back to pet listing page #}
+
 <a href="{% url 'login' %}" class="btn-outline">Logout</a>
+{# Logs out the current user #}
 {% endblock %}
 
 {% block content %}
+{# Main content section for create pet page #}
 
 <h2 class="page-title">Create Pet Profile</h2>
+{# Page heading #}
 
 <div class="form-card">
+    {# Card container for pet creation form #}
+
     <h3>Pet Details</h3>
+    {# Section heading inside the form #}
 
     <form method="POST">
-    {% csrf_token %}
+        {# Form uses POST method to submit pet data securely #}
+
+        {% csrf_token %}
+        {# CSRF token for protection against cross-site request forgery #}
+
+        <!-- Pet Name -->
         <div class="form-group">
             <label>Pet Name</label>
+            {# Input field for pet name #}
             <input type="text" name="name" placeholder="Enter pet name">
         </div>
 
+        <!-- Pet Type & Breed -->
         <div class="form-row">
+            {# Row layout for pet type and breed #}
+
             <div class="form-group">
                 <label>Pet Type</label>
+                {# Dropdown to select pet type #}
                 <select name="pet_type">
                     <option>Select Type</option>
                     <option>Dog</option>
@@ -38,18 +65,24 @@
 
             <div class="form-group">
                 <label>Breed</label>
+                {# Input field for pet breed #}
                 <input type="text" name="breed" placeholder="Enter breed">
             </div>
         </div>
 
+        <!-- Age & Gender -->
         <div class="form-row">
+            {# Row layout for age and gender #}
+
             <div class="form-group">
                 <label>Age (years)</label>
+                {# Numeric input for pet age #}
                 <input type="number" name="age" placeholder="Enter age">
             </div>
 
             <div class="form-group">
                 <label>Gender</label>
+                {# Dropdown to select pet gender #}
                 <select name="gender">
                     <option>Select Gender</option>
                     <option>Male</option>
@@ -58,11 +91,14 @@
             </div>
         </div>
 
+        <!-- Weight -->
         <div class="form-group">
             <label>Weight (kg)</label>
+            {# Numeric input for pet weight #}
             <input type="number" name="weight" placeholder="Enter weight">
         </div>
 
+        {# Submit button to save pet profile #}
         <button type="submit" name="save" class="save-btn">
             Save Pet Profile
         </button>

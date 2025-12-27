@@ -1,25 +1,41 @@
 {% extends "dashboard/base.html" %}
+{# Inherits the common dashboard layout (header, sidebar, content area) #}
+
 {% load static %}
+{# Loads static files such as CSS #}
 
 {% block title %}Health Records{% endblock %}
+{# Sets the browser/page title dynamically #}
 
 {% block css %}
+{# Links page-specific CSS for health records table styling #}
 <link rel="stylesheet" href="{% static 'css/health_records.css' %}">
 {% endblock %}
 
 {% block top_actions %}
+{# Top-right action buttons in dashboard header #}
+
 <a href="{% url 'dashboard:add_health_record' %}" class="btn-outline">
     + Add New Record
 </a>
+{# Navigates to add health record form #}
+
 <a href="{% url 'login' %}" class="btn-outline">Logout</a>
+{# Logs out the current user #}
 {% endblock %}
 
 {% block content %}
+{# Main content section for health records page #}
 
 <h2 class="page-title">Health Records</h2>
+{# Page heading #}
 
 <div class="card">
+    {# Card container for table layout #}
+
     <table class="records-table">
+        {# Table to display health records #}
+
         <thead>
             <tr>
                 <th>Pet</th>
@@ -32,29 +48,47 @@
         </thead>
 
         <tbody>
+        {# Loop through health records passed from the view #}
         {% for record in records %}
             <tr>
                 <td>{{ record.pet.name }}</td>
+                {# Displays related pet name #}
+
                 <td>{{ record.event_type }}</td>
+                {# Displays type of health event #}
+
                 <td>{{ record.event_date }}</td>
+                {# Displays event date #}
+
                 <td>{{ record.description }}</td>
+                {# Displays description of health event #}
+
                 <td>{{ record.veterinarian }}</td>
+                {# Displays veterinarian or clinic name #}
+
                 <td>
+                    {# Edit health record link #}
                     <a href="{% url 'dashboard:edit_health_record' record.id %}"
-                       class="btn-edit">Edit</a>
+                       class="btn-edit">
+                        Edit
+                    </a>
 
+                    {# Delete health record form (POST request for safety) #}
                     <form method="POST"
-      action="{% url 'dashboard:delete_health_record' record.id %}"
-      style="display:inline;">
-    {% csrf_token %}
-    <button type="submit" class="btn-delete">
-        Delete
-    </button>
-</form>
+                          action="{% url 'dashboard:delete_health_record' record.id %}"
+                          style="display:inline;">
+                        {% csrf_token %}
+                        {# CSRF token for security #}
 
+                        <button type="submit" class="btn-delete">
+                            Delete
+                        </button>
+                    </form>
                 </td> 
             </tr>
+
         {% empty %}
+            {# Displayed when no health records exist #}
             <tr>
                 <td colspan="6" style="text-align:center;">
                     No health records added yet.

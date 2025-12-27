@@ -1,35 +1,55 @@
 {% extends "dashboard/base.html" %}
+{# Inherits the common dashboard layout (header, sidebar, content area) #}
+
 {% load static %}
+{# Loads static files such as CSS #}
 
 {% block title %}Add Health Record{% endblock %}
+{# Sets the page title dynamically #}
 
 {% block css %}
+{# Links page-specific CSS for health record form styling #}
 <link rel="stylesheet" href="{% static 'css/create_health_record.css' %}">
 {% endblock %}
 
 {% block top_actions %}
+{# Top-right action buttons in dashboard header #}
+
 <a href="{% url 'dashboard:health_records' %}" class="btn-outline">
     ← Back to Health Records
 </a>
+{# Navigates back to health records list #}
+
 <a href="{% url 'login' %}" class="btn-outline">Logout</a>
+{# Logs out the current user #}
 {% endblock %}
 
 {% block content %}
+{# Main content section for this page #}
 
 <h2 class="page-title">Add Health Record</h2>
+{# Page heading #}
 
 <div class="form-card">
+    {# Card container for the health record form #}
+
     <h3>Health Event Details</h3>
+    {# Section heading inside the form card #}
 
     <form method="POST">
+        {# Form uses POST method to submit health record data securely #}
+
         {% csrf_token %}
+        {# CSRF token for protection against cross-site request forgery #}
 
         <!-- Select Pet -->
         <div class="form-group">
             <label>Pet</label>
+            {# Dropdown to select the pet related to this health record #}
             <select name="pet" required>
                 <option value="">Select Pet</option>
                 {% for pet in pets %}
+                    {# Loops through pets passed from the view #}
                     <option value="{{ pet.id }}">{{ pet.name }}</option>
                 {% endfor %}
             </select>
@@ -38,6 +58,7 @@
         <!-- Event Type -->
         <div class="form-group">
             <label>Event Type</label>
+            {# Dropdown to select type of health event #}
             <select name="event_type" required>
                 <option value="">Select Event Type</option>
                 <option value="Vaccination">Vaccination</option>
@@ -51,12 +72,14 @@
         <!-- Event Date -->
         <div class="form-group">
             <label>Event Date</label>
+            {# Date when the health event occurred #}
             <input type="date" name="event_date" required>
         </div>
 
         <!-- Description -->
         <div class="form-group">
             <label>Description</label>
+            {# Detailed description of the health event #}
             <textarea name="description" rows="4"
                       placeholder="Enter details (e.g. Rabies vaccine)"
                       required></textarea>
@@ -65,11 +88,13 @@
         <!-- Veterinarian -->
         <div class="form-group">
             <label>Veterinarian / Clinic</label>
+            {# Name of veterinarian or clinic where treatment occurred #}
             <input type="text" name="veterinarian"
                    placeholder="Clinic or doctor name"
                    required>
         </div>
 
+        {# Submit button to save health record #}
         <button type="submit" class="save-btn">
             Save Health Event
         </button>

@@ -1,25 +1,41 @@
 {% extends "dashboard/base.html" %}
+{# Inherits the common dashboard layout (header, sidebar, content area) #}
+
 {% load static %}
+{# Loads static files such as CSS #}
 
 {% block title %}Medications{% endblock %}
+{# Sets the browser/page title dynamically #}
 
 {% block css %}
+{# Links page-specific CSS for medications table styling #}
 <link rel="stylesheet" href="{% static 'css/medications.css' %}">
 {% endblock %}
 
 {% block top_actions %}
+{# Top-right action buttons in dashboard header #}
+
 <a href="{% url 'dashboard:add_medication' %}" class="btn-outline">
     + Add Medication
 </a>
+{# Navigates to add medication form #}
+
 <a href="{% url 'login' %}" class="btn-outline">Logout</a>
+{# Logs out the current user #}
 {% endblock %}
 
 {% block content %}
+{# Main content section for medications page #}
 
 <h2 class="page-title">Medications</h2>
+{# Page heading #}
 
 <div class="card">
+    {# Card container for medications table #}
+
     <table class="records-table">
+        {# Table displaying medication records #}
+
         <thead>
             <tr>
                 <th>Pet</th>
@@ -33,29 +49,50 @@
         </thead>
 
         <tbody>
+        {# Loop through medications passed from the view #}
         {% for med in medications %}
             <tr>
                 <td>{{ med.pet.name }}</td>
+                {# Displays related pet name #}
+
                 <td>{{ med.medication_name }}</td>
+                {# Displays medication name #}
+
                 <td>{{ med.dosage }}</td>
+                {# Displays dosage amount #}
+
                 <td>{{ med.frequency }}</td>
+                {# Displays medication frequency #}
+
                 <td>{{ med.start_date }}</td>
+                {# Displays medication start date #}
+
                 <td>{{ med.end_date|default:"—" }}</td>
-                 <td>
-                    <a href="{% url 'dashboard:edit_medication' med.id %}" class="btn-edit">Edit</a>
+                {# Displays end date or dash if not specified #}
 
+                <td>
+                    {# Edit medication link #}
+                    <a href="{% url 'dashboard:edit_medication' med.id %}"
+                       class="btn-edit">
+                        Edit
+                    </a>
 
+                    {# Delete medication form (POST request for security) #}
                     <form method="POST"
-          action="{% url 'dashboard:delete_medication' med.id %}"
-          style="display:inline;">
-        {% csrf_token %}
-        <button type="submit" class="btn-delete">
-            Delete
-        </button>
-    </form>
+                          action="{% url 'dashboard:delete_medication' med.id %}"
+                          style="display:inline;">
+                        {% csrf_token %}
+                        {# CSRF token for security #}
+
+                        <button type="submit" class="btn-delete">
+                            Delete
+                        </button>
+                    </form>
                 </td> 
             </tr>
+
         {% empty %}
+            {# Displayed when no medications exist #}
             <tr>
                 <td colspan="7" style="text-align:center;">
                     No medications added yet.

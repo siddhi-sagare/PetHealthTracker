@@ -1,43 +1,66 @@
 {% extends "dashboard/base.html" %}
+{# Inherits the common dashboard layout (top bar, sidebar, main content area) #}
+
 {% load static %}
+{# Loads static files such as CSS #}
 
 {% block title %}My Profile{% endblock %}
+{# Sets the browser/page title dynamically #}
 
 {% block css %}
+{# Page-specific CSS for profile page styling #}
 <link rel="stylesheet" href="{% static 'css/profile.css' %}">
 {% endblock %}
 
 {% block top_actions %}
+{# Top-right action buttons in dashboard header #}
+
 <a href="{% url 'dashboard:index' %}" class="btn-outline">
     ← Back to Dashboard
 </a>
+{# Navigates back to the dashboard home #}
+
 <a href="{% url 'login' %}" class="btn-outline">Logout</a>
+{# Logs out the current user #}
 {% endblock %}
 
 {% block content %}
+{# Main content section for user profile #}
 
 <h2 class="page-title">My Profile</h2>
+{# Page heading #}
 
 <div class="profile-card">
+    {# Card container for user profile details and form #}
 
-    <!-- Profile Header -->
+    <!-- ================= PROFILE HEADER ================= -->
     <div class="profile-header">
+        {# Header section showing avatar and basic user info #}
+
         <div class="avatar">
             {{ request.user.username|first|upper }}
+            {# Displays first letter of username as avatar #}
         </div>
 
         <div class="profile-info">
             <h3>{{ request.user.username }}</h3>
+            {# Displays logged-in user's username #}
+
             <p class="role">Pet Parent</p>
+            {# Static role label for user #}
         </div>
     </div>
 
-    <!-- Profile Form -->
+    <!-- ================= PROFILE FORM ================= -->
     <form method="POST">
+        {# Uses POST method to update user profile information #}
+
         {% csrf_token %}
+        {# CSRF token for protection against cross-site request forgery #}
 
         <div class="form-group">
             <label>Username</label>
+            {# Editable username field pre-filled with current value #}
             <input type="text"
                    name="username"
                    value="{{ request.user.username }}"
@@ -46,17 +69,21 @@
 
         <div class="form-group">
             <label>Email</label>
+            {# Editable email field pre-filled with current value #}
             <input type="email"
                    name="email"
                    value="{{ request.user.email }}"
                    required>
         </div>
 
+        <!-- ================= ACTION BUTTONS ================= -->
         <div class="profile-actions">
+            {# Save profile changes button #}
             <button type="submit" class="btn-primary">
                 Save Changes
             </button>
 
+            {# Link to Django’s password change view #}
             <a href="{% url 'password_change' %}" class="btn-secondary">
                 Change Password
             </a>

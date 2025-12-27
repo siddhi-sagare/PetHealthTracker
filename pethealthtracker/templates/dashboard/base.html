@@ -1,75 +1,95 @@
 {% load static %}
+{# Loads Django static template tag to use CSS/JS/images #}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>{% block title %}Dashboard{% endblock %}</title>
+
+    <title>
+        {% block title %}Dashboard{% endblock %}
+        {# Dynamic page title, overridden in child templates #}
+    </title>
 
     <!-- BASE CSS -->
+    {# Common CSS used across all dashboard pages #}
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
+
     {% block css %}{% endblock %}
+    {# Page-specific CSS can be injected here #}
 </head>
+
 <body>
 
-<!-- TOP BAR (logo + actions area only) -->
+<!-- ================= TOP BAR ================= -->
+<!-- Contains logo and top-right action buttons -->
 <header class="topbar">
     <div class="logo">
         🐾 <span>Pet Health Club</span>
+        {# Application logo / branding #}
     </div>
 
     <div class="top-actions">
         {% block top_actions %}{% endblock %}
+        {# Child templates inject buttons like Add, Logout, etc. #}
     </div>
 </header>
 
 <div class="layout">
 
-    <!-- SIDEBAR -->
+    <!-- ================= SIDEBAR ================= -->
+    <!-- Left navigation menu -->
     <aside class="sidebar">
 
+        {# Dashboard home link #}
         <a href="{% url 'dashboard:index' %}"
            class="{% if request.path == '/dashboard/' %}active{% endif %}">
             📊 Dashboard
         </a>
 
+        {# My Pets section #}
         <a href="{% url 'dashboard:mypets' %}"
            class="{% if '/pets/' in request.path %}active{% endif %}">
             🐶 My Pets
         </a>
 
+        {# Medications section #}
         <a href="{% url 'dashboard:medications' %}"
            class="{% if 'medications' in request.path %}active{% endif %}">
             💊 Medications
         </a>
 
+        {# Health records section #}
         <a href="{% url 'dashboard:health_records' %}"
            class="{% if 'health-records' in request.path %}active{% endif %}">
             📁 Health Records
         </a>
 
+        {# Appointments section #}
         <a href="{% url 'dashboard:appointments' %}"
            class="{% if 'appointments' in request.path %}active{% endif %}">
             📅 Appointments
         </a>
 
+        {# Profile section #}
         <a href="{% url 'dashboard:profile' %}"
            class="{% if request.resolver_match.url_name == 'profile' %}active{% endif %}">
             👤 My Profile
         </a>
- 
-<a href="{% url 'dashboard:settings' %}"
-   class="{% if request.resolver_match.url_name == 'settings' %}active{% endif %}">
-   ⚙️ Settings
-</a>
 
-
+        {# Settings section #}
+        <a href="{% url 'dashboard:settings' %}"
+           class="{% if request.resolver_match.url_name == 'settings' %}active{% endif %}">
+           ⚙️ Settings
+        </a>
 
     </aside>
 
-
-    <!-- MAIN CONTENT -->
+    <!-- ================= MAIN CONTENT ================= -->
+    <!-- Main page content rendered here -->
     <main class="content">
         {% block content %}{% endblock %}
+        {# Child templates inject page-specific content #}
     </main>
 
 </div>

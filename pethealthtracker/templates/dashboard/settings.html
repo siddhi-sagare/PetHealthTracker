@@ -1,29 +1,47 @@
 {% extends "dashboard/base.html" %}
+{# Inherits the common dashboard layout (top bar, sidebar, content area) #}
+
 {% load static %}
+{# Loads static files such as CSS #}
 
 {% block title %}Settings{% endblock %}
+{# Sets the browser/page title dynamically #}
 
 {% block css %}
+{# Page-specific CSS for settings page styling #}
 <link rel="stylesheet" href="{% static 'css/settings.css' %}">
 {% endblock %}
 
 {% block top_actions %}
+{# Top-right action buttons in dashboard header #}
+
 <a href="{% url 'dashboard:index' %}" class="btn-outline">
     ← Back to Dashboard
 </a>
+{# Navigates back to dashboard home #}
 
 <a href="{% url 'login' %}" class="btn-outline">Logout</a>
+{# Logs out the current user #}
 {% endblock %}
 
 {% block content %}
+{# Main content section for user settings #}
 
 <h2 class="page-title">Settings</h2>
+{# Page heading #}
 
 <div class="settings-card">
-    <form method="POST">
-        {% csrf_token %}
+    {# Card container for settings form #}
 
+    <form method="POST">
+        {# Uses POST method to save user settings #}
+
+        {% csrf_token %}
+        {# CSRF token for protection against cross-site request forgery #}
+
+        <!-- ================= NOTIFICATIONS SECTION ================= -->
         <h3 class="section-title">🔔 Notifications</h3>
+        {# Section heading for notification preferences #}
 
         <div class="setting-item">
             <label>
@@ -31,6 +49,7 @@
                        {% if settings.email_notifications %}checked{% endif %}>
                 Email Notifications
             </label>
+            {# Toggle for enabling/disabling email notifications #}
         </div>
 
         <div class="setting-item">
@@ -39,6 +58,7 @@
                        {% if settings.appointment_reminders %}checked{% endif %}>
                 Appointment Reminders
             </label>
+            {# Toggle for appointment reminder alerts #}
         </div>
 
         <div class="setting-item">
@@ -47,9 +67,12 @@
                        {% if settings.medication_reminders %}checked{% endif %}>
                 Medication Reminders
             </label>
+            {# Toggle for medication reminder alerts #}
         </div>
 
+        <!-- ================= PREFERENCES SECTION ================= -->
         <h3 class="section-title">🎨 Preferences</h3>
+        {# Section heading for UI preferences #}
 
         <div class="setting-item">
             <label>
@@ -57,9 +80,12 @@
                        {% if settings.dark_mode %}checked{% endif %}>
                 Dark Mode (Coming Soon)
             </label>
+            {# Placeholder toggle for future dark mode feature #}
         </div>
 
+        <!-- ================= SAVE ACTION ================= -->
         <div class="settings-actions">
+            {# Save button to submit updated settings #}
             <button type="submit" class="btn-primary">
                 Save Settings
             </button>

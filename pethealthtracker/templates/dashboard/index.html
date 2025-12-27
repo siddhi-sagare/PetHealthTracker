@@ -1,76 +1,99 @@
 {% extends "dashboard/base.html" %}
+{# Inherits the common dashboard layout (header, sidebar, content area) #}
+
 {% load static %}
+{# Loads static files such as CSS #}
 
 {% block title %}Dashboard{% endblock %}
+{# Sets the browser/page title #}
 
 {% block css %}
+{# Page-specific CSS for dashboard styling #}
 <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
 {% endblock %}
 
 {% block top_actions %}
+{# Top-right action buttons in dashboard header #}
+
 <a href="{% url 'dashboard:create_pet' %}" class="btn-outline">
     + Create Pet Profile
 </a>
+{# Shortcut to create a new pet profile #}
 
 <a href="{% url 'login' %}" class="btn-outline">Logout</a>
+{# Logs out the current user #}
 {% endblock %}
 
 {% block content %}
+{# Main dashboard content section #}
 
-<!-- WELCOME -->
+<!-- ================= WELCOME SECTION ================= -->
 <div class="card welcome-card">
+    {# Personalized welcome message using logged-in username #}
     <h2>Hello, {{ request.user.username }} 👋</h2>
 </div>
 
-<!-- STATS -->
+<!-- ================= STATISTICS SECTION ================= -->
 <div class="stats">
+    {# Displays summary counts for quick overview #}
 
     <div class="stat-card">
         🐶
         <h3>{{ pets_count|default:0 }}</h3>
+        {# Total number of pets owned by user #}
         <p>Pets</p>
     </div>
 
     <div class="stat-card">
         📅
         <h3>{{ appointments_count|default:0 }}</h3>
+        {# Total scheduled appointments #}
         <p>Appointments</p>
     </div>
 
     <div class="stat-card">
         💊
         <h3>{{ medications_count|default:0 }}</h3>
+        {# Total active medications #}
         <p>Medications</p>
     </div>
 
     <div class="stat-card">
         📁
         <h3>{{ health_records_count|default:0 }}</h3>
+        {# Total health records added #}
         <p>Health Records</p>
     </div>
 
 </div>
 
-<!-- QUICK ACTIONS -->
+<!-- ================= QUICK ACTIONS SECTION ================= -->
 <div class="card">
     <h3>Quick Actions</h3>
+    {# Provides shortcuts for commonly used actions #}
 
     <div class="actions">
+
         <a href="{% url 'dashboard:add_health_record' %}" class="action-btn">
             📁 + Add Health Record
         </a>
+        {# Quick link to add a new health record #}
 
         <a href="{% url 'dashboard:add_medication' %}" class="action-btn">
             💊 + Add Medication
         </a>
+        {# Quick link to add medication schedule #}
 
         <a href="{% url 'dashboard:add_appointment' %}" class="action-btn">
             📅 + Schedule Appointment
         </a>
+        {# Quick link to schedule appointment #}
 
         <a href="{% url 'dashboard:create_pet' %}" class="action-btn">
             🐶 + Add New Pet
         </a>
+        {# Quick link to create new pet profile #}
+
     </div>
 </div>
 

@@ -42,7 +42,7 @@ urlpatterns = [
     # /accounts/logout/
     # /accounts/password_change/
     # /accounts/password_reset/
-    path("accounts/", include("django.contrib.auth.urls")),
+    # path("accounts/", include("django.contrib.auth.urls")),
 
     # in dashboardapp in my profile page( customize password change ):
     # Overrides Django’s default password change behavior

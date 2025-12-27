@@ -1,32 +1,51 @@
 {% extends "dashboard/base.html" %}
+{# Inherits the common dashboard layout (header, sidebar, content area) #}
+
 {% load static %}
+{# Loads static files such as CSS #}
 
 {% block title %}Edit Appointment{% endblock %}
+{# Sets the browser/page title dynamically #}
 
 {% block css %}
+{# Reuses appointment form CSS for edit page #}
 <link rel="stylesheet" href="{% static 'css/create_appointment.css' %}">
 {% endblock %}
 
 {% block top_actions %}
+{# Top-right action buttons in dashboard header #}
+
 <a href="{% url 'dashboard:appointments' %}" class="btn-outline">
     ← Back to Appointments
 </a>
+{# Navigates back to appointments list #}
+
 <a href="{% url 'login' %}" class="btn-outline">Logout</a>
+{# Logs out the current user #}
 {% endblock %}
 
 {% block content %}
+{# Main content section for editing appointment #}
 
 <h2 class="page-title">Edit Appointment</h2>
+{# Page heading #}
 
 <div class="form-card">
+    {# Card container for edit appointment form #}
+
     <h3>Appointment Details</h3>
+    {# Section heading inside the form card #}
 
     <form method="POST">
+        {# Uses POST method to update appointment securely #}
+
         {% csrf_token %}
+        {# CSRF token for protection against cross-site request forgery #}
 
         <!-- Pet -->
         <div class="form-group">
             <label>Pet</label>
+            {# Dropdown to select pet (pre-selected current pet) #}
             <select name="pet" required>
                 {% for pet in pets %}
                     <option value="{{ pet.id }}"
@@ -40,6 +59,7 @@
         <!-- Appointment Type -->
         <div class="form-group">
             <label>Appointment Type</label>
+            {# Dropdown populated from model choices with current value selected #}
             <select name="appointment_type" required>
                 {% for value, label in appointment.APPOINTMENT_TYPE_CHOICES %}
                     <option value="{{ value }}"
@@ -52,14 +72,18 @@
 
         <!-- Date & Time -->
         <div class="form-row">
+            {# Row layout for date and time inputs #}
+
             <div class="form-group">
                 <label>Date</label>
+                {# Date input pre-filled with existing appointment date #}
                 <input type="date" name="appointment_date"
                        value="{{ appointment.appointment_date|date:'Y-m-d' }}" required>
             </div>
 
             <div class="form-group">
                 <label>Time</label>
+                {# Time input pre-filled with existing appointment time #}
                 <input type="time" name="appointment_time"
                        value="{{ appointment.appointment_time }}" required>
             </div>
@@ -68,6 +92,7 @@
         <!-- Clinic -->
         <div class="form-group">
             <label>Clinic / Vet</label>
+            {# Input field pre-filled with clinic or vet name #}
             <input type="text" name="clinic"
                    value="{{ appointment.clinic }}" required>
         </div>
@@ -75,9 +100,11 @@
         <!-- Notes -->
         <div class="form-group">
             <label>Notes</label>
+            {# Optional notes field pre-filled with existing data #}
             <textarea name="notes" rows="3">{{ appointment.notes }}</textarea>
         </div>
 
+        {# Submit button to update appointment details #}
         <button type="submit" class="save-btn">
             Update Appointment
         </button>

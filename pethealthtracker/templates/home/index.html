@@ -1,29 +1,60 @@
 {% extends 'home/base.html' %}
-{% load static %} 
+{# Extends the base template for public/home pages (navbar + footer) #}
+
+{% load static %}
+{# Loads static files such as images and CSS #}
+
 {% block content %}
+{# Main content block injected into home/base.html #}
+
 <section class="landing">
+    {# Main landing/hero section #}
+
     <div class="landing-left">
+        {# Left side content: heading, description, and feature highlights #}
+
         <h1>Track Your Pet's Health Easily</h1>
-        <p>Keep vaccinations, appointments, and health records all in one place.</p>
+        {# Main headline shown to users #}
+
+        <p>
+            Keep vaccinations, appointments, and health records all in one place.
+        </p>
+        {# Short description explaining the app purpose #}
+
         <div class="feature-cards">
+            {# Small cards highlighting key features #}
+
             <div class="card">
+                {# Feature: Vaccination tracking #}
                 <h1 style="font-size:20px">Vaccination Tracker</h1>
-                <p>Never miss a vaccination with organized schedules and reminders.</p>
+                <p>
+                    Never miss a vaccination with organized schedules and reminders.
+                </p>
             </div>
+
             <div class="card">
+                {# Feature: Health records storage #}
                 <h1 style="font-size:20px">Health Records</h1>
-                <p>Store vet visits, treatments, and medical history securely.</p>
+                <p>
+                    Store vet visits, treatments, and medical history securely.
+                </p>
             </div>
+
             <div class="card">
+                {# Feature: User dashboard #}
                 <h1 style="font-size:20px">User Dashboard</h1>
-                <p>Access all pet information from a clean, simple dashboard.</p>
+                <p>
+                    Access all pet information from a clean, simple dashboard.
+                </p>
             </div>
         </div>
     </div>
+
     <div class="landing-right">
+        {# Right side image for visual appeal #}
         <img src="{% static 'images/petimg.jpg' %}" alt="Pet Image">
+        {# Loads image from static folder #}
     </div>
 </section>
-
 
 {% endblock %}

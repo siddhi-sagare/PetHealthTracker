@@ -1,42 +1,61 @@
 {% extends 'home/base.html' %}
+{# Extends the base template for public/home pages (navbar + footer) #}
+
 {% load static %}
+{# Loads static files if needed (CSS, images, icons, etc.) #}
 
 {% block title %}Features | Pet Health Tracker{% endblock %}
+{# Sets a custom page title for the Features page #}
 
 {% block content %}
+{# Main content block injected into home/base.html #}
+
 <section class="features-page">
+    {# Wrapper section for all feature-related content #}
+
     <h1>Our Features</h1>
+    {# Main heading for features page #}
 
     <div class="features-grid">
+        {# Grid layout to display individual feature cards #}
+
         <div class="feature-card">
+            {# Feature: Pet Profiles #}
             <h3>🐾 Pet Profiles</h3>
             <p>Manage multiple pets with complete health details.</p>
         </div>
 
         <div class="feature-card">
+            {# Feature: Vaccination Tracking #}
             <h3>💉 Vaccination Tracking</h3>
             <p>Never miss a vaccination with reminders.</p>
         </div>
 
         <div class="feature-card">
+            {# Feature: Appointment Scheduling #}
             <h3>📅 Appointment Scheduling</h3>
             <p>Schedule vet visits easily.</p>
         </div>
 
         <div class="feature-card">
+            {# Feature: Medication Management #}
             <h3>💊 Medication Management</h3>
             <p>Track ongoing medications and dosage.</p>
         </div>
 
         <div class="feature-card">
+            {# Feature: Health Records #}
             <h3>📁 Health Records</h3>
             <p>All medical history in one place.</p>
         </div>
 
         <div class="feature-card">
+            {# Feature: Smart Reminders #}
             <h3>🔔 Smart Reminders</h3>
             <p>Get alerts for appointments and medicines.</p>
         </div>
+
     </div>
 </section>
+
 {% endblock %}

@@ -1,39 +1,73 @@
-{% load static %} 
+{% load static %}
+{# Loads static files such as CSS and images #}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    {# Page title block – can be overridden by child templates #}
     <title>{% block title %}Pet Health Tracker{% endblock %}</title>
+
+    {# Responsive layout for mobile and desktop #}
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    {# Main stylesheet for home pages #}
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    
 </head>
 <body>
 
-<!-- NAVBAR -->
+<!-- ================= NAVBAR ================= -->
 <nav class="navbar">
+    {# Logo / Brand name #}
     <div class="logo">🐾 Pet Health Club</div>
+
+    {# Navigation links for public pages #}
     <div class="nav-links">
-        <button><a href="{% url 'home' %}" class="btn">Home</a></button>
-        <button><a href="{% url 'features' %}" class="btn">Features</a>
-</button>
-        <button><a href="{% url 'how_it_works' %}" class="btn">How it works</a></button>
-        <button><a href="{% url 'contact' %}">Contact Us</a></button>
+        <button>
+            <a href="{% url 'home' %}" class="btn">Home</a>
+        </button>
+        {# Link to landing page #}
+
+        <button>
+            <a href="{% url 'features' %}" class="btn">Features</a>
+        </button>
+        {# Link to features page #}
+
+        <button>
+            <a href="{% url 'how_it_works' %}" class="btn">How it works</a>
+        </button>
+        {# Link to how-it-works page #}
+
+        <button>
+            <a href="{% url 'contact' %}">Contact Us</a>
+        </button>
+        {# Link to contact page #}
     </div>
+
+    {# Authentication buttons (login & register) #}
     <div class="auth-buttons">
-        <button class="login-btn"><a href="{% url 'login' %}" class="nav-btn login-btn">Login</a></button>
-        <button class="register-btn"><a href="{% url 'register' %}">Register</a></button>
+        <button class="login-btn">
+            <a href="{% url 'login' %}" class="nav-btn login-btn">Login</a>
+        </button>
+        {# Login page link #}
+
+        <button class="register-btn">
+            <a href="{% url 'register' %}">Register</a>
+        </button>
+        {# Registration page link #}
     </div>
 </nav>
 
-<!-- MAIN CONTENT -->
+<!-- ================= MAIN CONTENT ================= -->
 <div class="main-container">
+    {# Content block to be filled by child templates #}
     {% block content %}{% endblock %}
 </div>
 
-<!-- FOOTER -->
+<!-- ================= FOOTER ================= -->
 <footer>
     <p>© 2025 Pet Health Club | All Rights Reserved.</p>
+    {# Footer copyright #}
 </footer>
 
 </body>

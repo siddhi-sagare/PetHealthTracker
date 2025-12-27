@@ -1,39 +1,72 @@
 {% extends "dashboard/base.html" %}
+{# Inherits the common dashboard layout (header, sidebar, content area) #}
+
 {% load static %}
+{# Loads static files such as CSS #}
 
 {% block title %}My Pets{% endblock %}
+{# Sets the browser/page title dynamically #}
 
 {% block css %}
+{# Links page-specific CSS for pet card grid styling #}
 <link rel="stylesheet" href="{% static 'css/mypets.css' %}">
 {% endblock %}
+
 {% block top_actions %}
+{# Top-right action buttons in dashboard header #}
+
 <a href="{% url 'dashboard:create_pet' %}" class="btn-outline">
     + Add New Pet
 </a>
+{# Navigates to create pet profile form #}
+
 <a href="{% url 'login' %}" class="btn-outline">Logout</a>
+{# Logs out the current user #}
 {% endblock %}
 
 {% block content %}
+{# Main content section for pets listing #}
 
 <h2 class="page-title">My Pets</h2>
+{# Page heading #}
 
 <div class="pets-grid">
+    {# Grid layout to display pet cards #}
+
 {% for pet in pets %}
+    {# Loop through pets belonging to the logged-in user #}
+
     <div class="pet-card">
+        {# Individual pet information card #}
+
         <h3>{{ pet.name }}</h3>
+        {# Displays pet name #}
+
         <p><strong>Type:</strong> {{ pet.pet_type }}</p>
+        {# Displays pet type (Dog/Cat) #}
+
         <p><strong>Breed:</strong> {{ pet.breed }}</p>
+        {# Displays pet breed #}
+
         <p><strong>Age:</strong> {{ pet.age }} years</p>
+        {# Displays pet age #}
 
         <div class="pet-actions">
-            <a href="{% url 'dashboard:edit_pet' pet.id %}" class="btn-edit">
+            {# Action buttons for pet management #}
+
+            <a href="{% url 'dashboard:edit_pet' pet.id %}"
+               class="btn-edit">
                 Edit
             </a>
+            {# Link to edit pet details #}
 
-           <form method="POST"
+            {# Delete pet form (POST request for safety) #}
+            <form method="POST"
                   action="{% url 'dashboard:delete_pet' pet.id %}"
                   style="display:inline;">
                 {% csrf_token %}
+                {# CSRF token for security #}
+
                 <button type="submit" class="btn-delete">
                     Delete
                 </button>
@@ -41,10 +74,11 @@
 
         </div>
     </div>
+
 {% empty %}
+    {# Message displayed when no pets exist #}
     <p>No pets added yet.</p>
 {% endfor %}
 </div>
-
 
 {% endblock %}

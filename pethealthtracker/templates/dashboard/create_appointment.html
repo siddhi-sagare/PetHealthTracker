@@ -1,35 +1,55 @@
 {% extends "dashboard/base.html" %}
+{# Inherits the common dashboard layout (header, sidebar, content area) #}
+
 {% load static %}
+{# Loads static files such as CSS #}
 
 {% block title %}Add Appointment{% endblock %}
+{# Sets the page title dynamically #}
 
 {% block css %}
+{# Links page-specific CSS for appointment form styling #}
 <link rel="stylesheet" href="{% static 'css/create_appointment.css' %}">
 {% endblock %}
 
 {% block top_actions %}
+{# Top-right action buttons in dashboard header #}
+
 <a href="{% url 'dashboard:appointments' %}" class="btn-outline">
     ← Back to Appointments
 </a>
+{# Navigates back to appointments list #}
+
 <a href="{% url 'login' %}" class="btn-outline">Logout</a>
+{# Logs out the current user #}
 {% endblock %}
 
 {% block content %}
+{# Main content section for this page #}
 
 <h2 class="page-title">Schedule Appointment</h2>
+{# Page heading #}
 
 <div class="form-card">
+    {# Card container for the appointment form #}
+
     <h3>Appointment Details</h3>
+    {# Section heading inside the form card #}
 
     <form method="POST">
+        {# Form uses POST method to submit appointment data securely #}
+
         {% csrf_token %}
+        {# CSRF token for security against cross-site request forgery #}
 
         <!-- Select Pet -->
         <div class="form-group">
             <label>Pet</label>
+            {# Dropdown to select pet for the appointment #}
             <select name="pet" required>
                 <option value="">Select Pet</option>
                 {% for pet in pets %}
+                    {# Loops through pets passed from view #}
                     <option value="{{ pet.id }}">{{ pet.name }}</option>
                 {% endfor %}
             </select>
@@ -38,6 +58,7 @@
         <!-- Appointment Type -->
         <div class="form-group">
             <label>Appointment Type</label>
+            {# Dropdown to select appointment category #}
             <select name="appointment_type" required>
                 <option value="">Select Type</option>
                 <option value="Vet Visit">Vet Visit</option>
@@ -49,13 +70,17 @@
 
         <!-- Date & Time -->
         <div class="form-row">
+            {# Row layout for date and time fields #}
+
             <div class="form-group">
                 <label>Date</label>
+                {# Appointment date input #}
                 <input type="date" name="appointment_date" required>
             </div>
 
             <div class="form-group">
                 <label>Time</label>
+                {# Appointment time input #}
                 <input type="time" name="appointment_time" required>
             </div>
         </div>
@@ -63,6 +88,7 @@
         <!-- Clinic -->
         <div class="form-group">
             <label>Clinic / Vet</label>
+            {# Input for clinic or veterinarian name #}
             <input type="text" name="clinic"
                    placeholder="Enter clinic or vet name"
                    required>
@@ -71,10 +97,12 @@
         <!-- Notes -->
         <div class="form-group">
             <label>Notes (optional)</label>
+            {# Optional notes related to appointment #}
             <textarea name="notes" rows="3"
                       placeholder="Additional notes"></textarea>
         </div>
 
+        {# Submit button to save appointment #}
         <button type="submit" class="save-btn">
             Save Appointment
         </button>

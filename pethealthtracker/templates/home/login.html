@@ -1,34 +1,53 @@
-
 {% extends 'home/base.html' %}
+{# Extends the base template for public/home pages (navbar + footer) #}
+
 {% block title %}Login | Pet Health Tracker{% endblock %}
+{# Sets a custom page title for the Login page #}
 
 {% block content %}
+{# Main content block injected into home/base.html #}
+
 <section class="auth-section">
+    {# Wrapper section for authentication pages #}
+
     <h1>Login</h1>
-    
+    {# Page heading #}
 
     <div class="auth-box">
+        {# Card-style container for login form #}
+
         <form method="POST">
-    {% csrf_token %}
+            {# Uses POST method to securely send login credentials #}
+
+            {% csrf_token %}
+            {# CSRF token for protection against cross-site request forgery #}
+
             <div class="form-group">
                 <label>Username:</label>
-                <input type="text" name="username" placeholder="Username" required>
+                {# Input field for username #}
+                <input type="text" name="username"
+                       placeholder="Username" required>
             </div>
 
             <div class="form-group">
                 <label>Password:</label>
-                <input type="password" name="password" placeholder="Password" required>
+                {# Input field for password (hidden characters) #}
+                <input type="password" name="password"
+                       placeholder="Password" required>
             </div>
 
-            <button type="submit" class="btn-primary">Login</button>
+            {# Submit button to authenticate the user #}
+            <button type="submit" class="btn-primary">
+                Login
+            </button>
         </form>
 
+        {# Redirect link for users who don’t have an account #}
         <p class="auth-link">
             Don’t have an account?
-           <a href="{% url 'register' %}">Register here</a>
+            <a href="{% url 'register' %}">Register here</a>
         </p>
     </div>
 </section>
+
 {% endblock %}
-
-

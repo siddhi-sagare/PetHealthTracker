@@ -1,32 +1,51 @@
 {% extends "dashboard/base.html" %}
+{# Inherits the common dashboard layout (header, sidebar, content area) #}
+
 {% load static %}
+{# Loads static files such as CSS #}
 
 {% block title %}Edit Medication{% endblock %}
+{# Sets the browser/page title dynamically #}
 
 {% block css %}
+{# Reuses medication form CSS for edit page styling #}
 <link rel="stylesheet" href="{% static 'css/create_medication.css' %}">
 {% endblock %}
 
 {% block top_actions %}
+{# Top-right action buttons in dashboard header #}
+
 <a href="{% url 'dashboard:medications' %}" class="btn-outline">
     ← Back to Medications
 </a>
+{# Navigates back to medications list page #}
+
 <a href="{% url 'login' %}" class="btn-outline">Logout</a>
+{# Logs out the current user #}
 {% endblock %}
 
 {% block content %}
+{# Main content section for editing medication #}
 
 <h2 class="page-title">Edit Medication</h2>
+{# Page heading #}
 
 <div class="form-card">
+    {# Card container for edit medication form #}
+
     <h3>Medication Details</h3>
+    {# Section heading inside the form card #}
 
     <form method="POST">
+        {# Uses POST method to update medication details securely #}
+
         {% csrf_token %}
+        {# CSRF token for protection against cross-site request forgery #}
 
         <!-- Pet -->
         <div class="form-group">
             <label>Pet</label>
+            {# Dropdown to select pet (current pet is pre-selected) #}
             <select name="pet" required>
                 {% for pet in pets %}
                     <option value="{{ pet.id }}"
@@ -40,6 +59,7 @@
         <!-- Medication Name -->
         <div class="form-group">
             <label>Medication Name</label>
+            {# Input field pre-filled with existing medication name #}
             <input type="text"
                    name="medication_name"
                    value="{{ medication.medication_name }}"
@@ -48,8 +68,11 @@
 
         <!-- Dosage & Frequency -->
         <div class="form-row">
+            {# Row layout for dosage and frequency fields #}
+
             <div class="form-group">
                 <label>Dosage</label>
+                {# Dosage amount (e.g. 5ml, 1 tablet) #}
                 <input type="text"
                        name="dosage"
                        value="{{ medication.dosage }}"
@@ -58,6 +81,7 @@
 
             <div class="form-group">
                 <label>Frequency</label>
+                {# Frequency of medication intake #}
                 <input type="text"
                        name="frequency"
                        value="{{ medication.frequency }}"
@@ -67,8 +91,11 @@
 
         <!-- Dates -->
         <div class="form-row">
+            {# Row layout for start and end date fields #}
+
             <div class="form-group">
                 <label>Start Date</label>
+                {# Medication start date pre-filled #}
                 <input type="date"
                        name="start_date"
                        value="{{ medication.start_date|date:'Y-m-d' }}"
@@ -77,6 +104,7 @@
 
             <div class="form-group">
                 <label>End Date</label>
+                {# Optional medication end date #}
                 <input type="date"
                        name="end_date"
                        value="{{ medication.end_date|date:'Y-m-d' }}">
@@ -86,9 +114,11 @@
         <!-- Notes -->
         <div class="form-group">
             <label>Notes</label>
+            {# Optional notes related to medication #}
             <textarea name="notes" rows="3">{{ medication.notes }}</textarea>
         </div>
 
+        {# Submit button to update medication record #}
         <button type="submit" class="save-btn">
             Update Medication
         </button>

@@ -1,25 +1,41 @@
 {% extends "dashboard/base.html" %}
+{# Extends the common dashboard base layout #}
+
 {% load static %}
+{# Loads Django static files (CSS, JS, images) #}
 
 {% block title %}Appointments{% endblock %}
+{# Sets the page title shown in browser/tab #}
 
 {% block css %}
+{# Links page-specific CSS file #}
 <link rel="stylesheet" href="{% static 'css/appointments.css' %}">
 {% endblock %}
 
 {% block top_actions %}
+{# Top-right action buttons in dashboard header #}
+
 <a href="{% url 'dashboard:add_appointment' %}" class="btn-outline">
     + Add Appointment
 </a>
+{# Button to navigate to Add Appointment page #}
+
 <a href="{% url 'login' %}" class="btn-outline">Logout</a>
+{# Logout button (redirects to login page) #}
 {% endblock %}
 
 {% block content %}
+{# Main content area of the page #}
 
 <h2 class="page-title">Appointments</h2>
+{# Page heading #}
 
 <div class="card">
+    {# Card container for table layout #}
+
     <table class="records-table">
+        {# Table to display appointments list #}
+
         <thead>
             <tr>
                 <th>Pet</th>
@@ -33,6 +49,7 @@
         </thead>
 
         <tbody>
+        {# Loop through appointments passed from view #}
         {% for appt in appointments %}
             <tr>
                 <td>{{ appt.pet.name }}</td>
@@ -42,19 +59,28 @@
                 <td>{{ appt.clinic }}</td>
                 <td>{{ appt.status }}</td>
                 <td>
-                    <a href="{% url 'dashboard:edit_appointment' appt.id %}" class="btn-edit">Edit</a>
+                    {# Edit appointment link #}
+                    <a href="{% url 'dashboard:edit_appointment' appt.id %}"
+                       class="btn-edit">
+                        Edit
+                    </a>
 
+                    {# Delete appointment form (POST request for safety) #}
                     <form method="POST"
-          action="{% url 'dashboard:delete_appointment' appt.id %}"
-          style="display:inline;">
-        {% csrf_token %}
-        <button type="submit" class="btn-delete">
-            Delete
-        </button>
-    </form>
+                          action="{% url 'dashboard:delete_appointment' appt.id %}"
+                          style="display:inline;">
+                        {% csrf_token %}
+                        {# CSRF token for security #}
+
+                        <button type="submit" class="btn-delete">
+                            Delete
+                        </button>
+                    </form>
                 </td>
             </tr>
+
         {% empty %}
+            {# Shown when no appointments exist #}
             <tr>
                 <td colspan="7" style="text-align:center;">
                     No appointments scheduled yet.

@@ -1,74 +1,85 @@
-/* GLOBAL RESET */
+/* ================= GLOBAL RESET ================= */
+/* Removes default browser spacing and ensures consistent sizing */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, sans-serif;
+    margin: 0;                      /* Removes default margin */
+    padding: 0;                     /* Removes default padding */
+    box-sizing: border-box;         /* Includes padding & border in width/height */
+    font-family: Arial, sans-serif; /* Sets default font for entire app */
 }
 
+/* Body background styling */
 body {
-    background: #f4f7fb;
+    background: #f4f7fb;            /* Light background for dashboard UI */
 }
 
-/* TOP BAR */
+/* ================= TOP NAVIGATION BAR ================= */
+/* Top bar container */
 .topbar {
-    background: #1e88e5;
-    color: white;
-    padding: 15px 30px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    background: #1e88e5;            /* Primary blue theme color */
+    color: white;                   /* White text for contrast */
+    padding: 15px 30px;             /* Spacing inside the top bar */
+    display: flex;                  /* Flexbox for horizontal layout */
+    justify-content: space-between; /* Logo on left, actions on right */
+    align-items: center;            /* Vertically centers content */
 }
 
+/* Logo / app name styling */
 .logo {
-    font-size: 20px;
-    font-weight: bold;
+    font-size: 20px;                /* Larger font size for brand name */
+    font-weight: bold;              /* Makes logo text bold */
 }
 
+/* Right-side action buttons container */
 .top-actions a {
-    margin-left: 10px;
+    margin-left: 10px;              /* Space between action buttons */
 }
 
-/* COMMON BUTTON */
+/* ================= COMMON BUTTON STYLE ================= */
+/* Outline-style button used across dashboard */
 .btn-outline {
-    background: white;
-    color: #1e88e5;
-    padding: 8px 14px;
-    border-radius: 6px;
-    text-decoration: none;
-    font-weight: bold;
+    background: white;              /* White background */
+    color: #1e88e5;                 /* Blue text to match theme */
+    padding: 8px 14px;              /* Button inner spacing */
+    border-radius: 6px;             /* Rounded corners */
+    text-decoration: none;          /* Removes underline from link */
+    font-weight: bold;              /* Bold text for visibility */
 }
 
-/* LAYOUT */
+/* ================= PAGE LAYOUT ================= */
+/* Main layout wrapper (sidebar + content) */
 .layout {
-    display: flex;
-    min-height: calc(100vh - 60px);
+    display: flex;                  /* Horizontal layout */
+    min-height: calc(100vh - 60px); /* Full height minus top bar */
 }
 
-/* SIDEBAR */
+/* ================= SIDEBAR ================= */
+/* Sidebar container */
 .sidebar {
-    width: 220px;
-    background: #1e88e5;
-    padding: 20px;
+    width: 220px;                   /* Fixed sidebar width */
+    background: #1e88e5;            /* Same blue theme as top bar */
+    padding: 20px;                  /* Inner spacing */
 }
 
+/* Sidebar navigation links */
 .sidebar a {
-    display: block;
-    color: white;
-    padding: 12px;
-    margin-bottom: 10px;
-    border-radius: 6px;
-    text-decoration: none;
+    display: block;                 /* Full-width clickable links */
+    color: white;                   /* White text */
+    padding: 12px;                  /* Space inside links */
+    margin-bottom: 10px;            /* Space between menu items */
+    border-radius: 6px;             /* Rounded corners */
+    text-decoration: none;          /* Removes underline */
 }
 
+/* Active and hover state for sidebar links */
 .sidebar a.active,
 .sidebar a:hover {
-    background: white;
-    color: #1e88e5;
+    background: white;              /* White background on hover/active */
+    color: #1e88e5;                 /* Blue text for contrast */
 }
 
-/* MAIN CONTENT */
+/* ================= MAIN CONTENT AREA ================= */
+/* Main content container */
 .content {
-    flex: 1;
-    padding: 30px;
+    flex: 1;                        /* Takes remaining available width */
+    padding: 30px;                  /* Space around content */
 }

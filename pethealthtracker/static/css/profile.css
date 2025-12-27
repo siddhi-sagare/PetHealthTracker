@@ -1,102 +1,116 @@
-/* PAGE TITLE */
+/* ================= PAGE TITLE ================= */
+/* Styles the main heading of the profile page */
 .page-title {
-    font-size: 26px;
-    font-weight: bold;
-    margin-bottom: 20px;
-    color: #1e88e5;
+    font-size: 26px;                /* Large title font size */
+    font-weight: bold;              /* Bold text for emphasis */
+    margin-bottom: 20px;            /* Space below the title */
+    color: #1e88e5;                 /* Primary blue theme color */
 }
 
-/* PROFILE CARD */
+/* ================= PROFILE CARD ================= */
+/* Card container for user profile information */
 .profile-card {
-    background: white;
-    padding: 30px;
-    border-radius: 16px;
-    max-width: 600px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    background: white;              /* White background for clean UI */
+    padding: 30px;                  /* Inner spacing */
+    border-radius: 16px;            /* Rounded corners */
+    max-width: 600px;               /* Restricts card width */
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08); /* Soft shadow */
 }
 
-/* HEADER */
+/* ================= HEADER ================= */
+/* Header section containing avatar and user info */
 .profile-header {
-    display: flex;
-    align-items: center;
-    margin-bottom: 25px;
+    display: flex;                  /* Horizontal alignment */
+    align-items: center;            /* Vertically centers content */
+    margin-bottom: 25px;            /* Space below header */
 }
 
+/* User avatar styling */
 .avatar {
-    width: 70px;
-    height: 70px;
-    background: #1e88e5;
-    color: white;
-    border-radius: 50%;
-    font-size: 32px;
-    font-weight: bold;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-right: 20px;
+    width: 70px;                    /* Avatar width */
+    height: 70px;                   /* Avatar height */
+    background: #1e88e5;            /* Blue background */
+    color: white;                   /* White text */
+    border-radius: 50%;             /* Circular avatar */
+    font-size: 32px;                /* Large initials text */
+    font-weight: bold;              /* Bold initials */
+    display: flex;                  /* Flexbox for centering text */
+    align-items: center;            /* Vertical centering */
+    justify-content: center;        /* Horizontal centering */
+    margin-right: 20px;             /* Space between avatar and info */
 }
 
+/* User name styling */
 .profile-info h3 {
-    margin: 0;
-    font-size: 22px;
+    margin: 0;                      /* Removes default margin */
+    font-size: 22px;                /* User name font size */
 }
 
+/* User role / subtitle text */
 .role {
-    color: gray;
-    font-size: 14px;
+    color: gray;                    /* Muted text color */
+    font-size: 14px;                /* Smaller text size */
 }
 
-/* FORM */
+/* ================= FORM ================= */
+/* Wrapper for each input field */
 .form-group {
-    margin-bottom: 20px;
+    margin-bottom: 20px;            /* Space between fields */
 }
 
+/* Label styling */
 .form-group label {
-    display: block;
-    font-weight: bold;
-    margin-bottom: 6px;
+    display: block;                 /* Label above input */
+    font-weight: bold;              /* Bold label text */
+    margin-bottom: 6px;             /* Space between label and input */
 }
 
+/* Input field styling */
 .form-group input {
-    width: 100%;
-    padding: 12px;
-    border-radius: 8px;
-    border: 1px solid #ccc;
-    font-size: 15px;
+    width: 100%;                    /* Full width input */
+    padding: 12px;                  /* Inner spacing */
+    border-radius: 8px;             /* Rounded corners */
+    border: 1px solid #ccc;         /* Light border */
+    font-size: 15px;                /* Input text size */
 }
 
-/* ACTION BUTTONS */
+/* ================= ACTION BUTTONS ================= */
+/* Container for profile action buttons */
 .profile-actions {
-    display: flex;
-    gap: 15px;
-    margin-top: 10px;
+    display: flex;                  /* Horizontal layout */
+    gap: 15px;                      /* Space between buttons */
+    margin-top: 10px;               /* Space above buttons */
 }
 
+/* Primary action button */
 .btn-primary {
-    background: #1e88e5;
-    color: white;
-    padding: 12px 22px;
-    border-radius: 8px;
-    border: none;
-    cursor: pointer;
-    font-weight: bold;
-    text-decoration: none;
+    background: #1e88e5;            /* Primary blue color */
+    color: white;                   /* White text */
+    padding: 12px 22px;             /* Button padding */
+    border-radius: 8px;             /* Rounded corners */
+    border: none;                   /* Removes default border */
+    cursor: pointer;                /* Pointer cursor */
+    font-weight: bold;              /* Bold button text */
+    text-decoration: none;          /* Removes underline */
 }
 
+/* Secondary action button */
 .btn-secondary {
-    background: #4caf50;
-    color: white;
-    padding: 12px 22px;
-    border-radius: 8px;
-    text-decoration: none;
-    font-weight: bold;
+    background: #4caf50;            /* Green background */
+    color: white;                   /* White text */
+    padding: 12px 22px;             /* Button padding */
+    border-radius: 8px;             /* Rounded corners */
+    text-decoration: none;          /* Removes underline */
+    font-weight: bold;              /* Bold button text */
 }
 
-/* HOVER EFFECTS */
+/* ================= HOVER EFFECTS ================= */
+/* Hover effect for primary button */
 .btn-primary:hover {
-    background: #1565c0;
+    background: #1565c0;            /* Darker blue on hover */
 }
 
+/* Hover effect for secondary button */
 .btn-secondary:hover {
-    background: #388e3c;
+    background: #388e3c;            /* Darker green on hover */
 }

@@ -1,46 +1,54 @@
+/* Page title styling */
 .page-title {
-    font-size: 26px;
-    margin-bottom: 20px;
+    font-size: 26px;          /* Sets large font size for page heading */
+    margin-bottom: 20px;      /* Space below the title */
 }
 
+/* Table container */
 .records-table {
-    width: 100%;
-    border-collapse: collapse;
+    width: 100%;              /* Table takes full width of container */
+    border-collapse: collapse;/* Removes gap between table borders */
 }
 
+/* Table header and table data cells */
 .records-table th,
 .records-table td {
-    padding: 12px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
+    padding: 12px;            /* Inner spacing inside table cells */
+    text-align: left;         /* Aligns text to the left */
+    border-bottom: 1px solid #ddd; /* Light border between rows */
 }
 
+/* Table header styling */
 .records-table th {
-    background: #f5f7fb;
-    font-weight: bold;
+    background: #f5f7fb;      /* Light background color for header */
+    font-weight: bold;        /* Makes header text bold */
 }
 
+/* Hover effect for table rows */
 .records-table tr:hover {
-    background: #f9f9f9;
+    background: #f9f9f9;      /* Changes background on mouse hover */
 }
 
-/* Buttons */
+/* ================= Buttons Styling ================= */
+
+/* Edit button style */
 .btn-edit {
-    background: #1e88e5;
-    color: white;
-    padding: 6px 10px;
-    border-radius: 6px;
-    text-decoration: none;
-    font-size: 13px;
-    margin-right: 5px;
+    background: #1e88e5;      /* Blue background for edit action */
+    color: white;             /* White text color */
+    padding: 6px 10px;        /* Space inside the button */
+    border-radius: 6px;       /* Rounded corners */
+    text-decoration: none;    /* Removes underline from link */
+    font-size: 13px;          /* Small button text size */
+    margin-right: 5px;        /* Space between buttons */
 }
 
+/* Delete button style */
 .btn-delete {
-    background: #e53935;
-    color: white;
-    padding: 6px 10px;
-    border-radius: 6px;
-    border: none;
-    cursor: pointer;
-    font-size: 13px;
+    background: #e53935;      /* Red background for delete action */
+    color: white;             /* White text color */
+    padding: 6px 10px;        /* Space inside the button */
+    border-radius: 6px;       /* Rounded corners */
+    border: none;             /* Removes default button border */
+    cursor: pointer;          /* Shows pointer cursor on hover */
+    font-size: 13px;          /* Small button text size */
 }

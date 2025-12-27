@@ -1,58 +1,69 @@
+/* ================= PAGE TITLE ================= */
+/* Styles the main heading of the page */
 .page-title {
-    font-size: 26px;
-    margin-bottom: 20px;
+    font-size: 26px;                /* Large font size for page title */
+    margin-bottom: 20px;            /* Space below the title */
 }
 
-/* GRID LAYOUT */
+/* ================= GRID LAYOUT ================= */
+/* Grid layout for displaying pet cards */
 .pets-grid {
-    display: grid;
+    display: grid;                  /* Enables CSS Grid */
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 25px;
+    /* Creates responsive columns that adapt to screen size */
+    gap: 25px;                      /* Space between pet cards */
 }
 
-/* PET CARD */
+/* ================= PET CARD ================= */
+/* Individual pet card styling */
 .pet-card {
-    background: #ffffff;
-    padding: 22px;
-    border-radius: 14px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
-    transition: 0.3s ease;
+    background: #ffffff;            /* White card background */
+    padding: 22px;                  /* Inner spacing inside card */
+    border-radius: 14px;            /* Rounded corners */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08); /* Soft shadow */
+    transition: 0.3s ease;          /* Smooth hover animation */
 }
 
+/* Hover effect for pet card */
 .pet-card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+    transform: translateY(-6px);    /* Slight lift effect on hover */
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15); /* Stronger shadow */
 }
 
+/* Pet name/title inside card */
 .pet-card h3 {
-    margin-bottom: 10px;
+    margin-bottom: 10px;            /* Space below pet name */
 }
 
+/* Pet details text */
 .pet-card p {
-    margin-bottom: 6px;
-    font-size: 14px;
+    margin-bottom: 6px;             /* Space between details */
+    font-size: 14px;                /* Smaller text for details */
 }
 
-/* ACTION BUTTONS */
+/* ================= ACTION BUTTONS ================= */
+/* Container for edit and delete buttons */
 .pet-actions {
-    margin-top: 15px;
+    margin-top: 15px;               /* Space above action buttons */
 }
 
+/* Edit button styling */
 .btn-edit {
-    background: #1e88e5;
-    color: white;
-    padding: 6px 12px;
-    border-radius: 6px;
-    text-decoration: none;
-    margin-right: 8px;
-    font-size: 13px;
+    background: #1e88e5;            /* Blue background for edit action */
+    color: white;                   /* White text */
+    padding: 6px 12px;              /* Button padding */
+    border-radius: 6px;             /* Rounded corners */
+    text-decoration: none;          /* Removes underline */
+    margin-right: 8px;              /* Space between buttons */
+    font-size: 13px;                /* Button text size */
 }
 
+/* Delete button styling */
 .btn-delete {
-    background: #e53935;
-    color: white;
-    padding: 6px 12px;
-    border-radius: 6px;
-    text-decoration: none;
-    font-size: 13px;
+    background: #e53935;            /* Red background for delete action */
+    color: white;                   /* White text */
+    padding: 6px 12px;              /* Button padding */
+    border-radius: 6px;             /* Rounded corners */
+    text-decoration: none;          /* Removes underline */
+    font-size: 13px;                /* Button text size */
 }

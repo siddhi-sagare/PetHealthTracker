@@ -77,16 +77,30 @@ WSGI_APPLICATION = 'pethealthtracker.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 
+# Database configuration using MySQL
 DATABASES = {
     'default': {
-       'ENGINE': 'django.db.backends.mysql',#use MySQL for backend
-        'NAME': 'dashboard_pet', #to be created in mysql
+        # Specifies MySQL as the database engine
+        'ENGINE': 'django.db.backends.mysql',  # Use MySQL for backend
+
+        # Name of the database to be used
+        # This database must be created manually in MySQL
+        'NAME': 'dashboard_pet',
+
+        # Database username
         'USER': 'root',
+
+        # Database password
         'PASSWORD': 'admin',
+
+        # Database server address
         'HOST': 'localhost',
+
+        # Port number on which MySQL server is running
         'PORT': '3306',
     }
 }
+
 
 
 # Password validation
@@ -123,13 +137,30 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
+
+# URL prefix used when referring to static files in templates
+# Example: <link rel="stylesheet" href="{% static 'css/style.css' %}">
 STATIC_URL = 'static/'
+
+# List of directories where Django will search for static files
+# This is mainly used during development
 STATICFILES_DIRS = [
-    (BASE_DIR / 'static'), #static folder created
+    BASE_DIR / 'static',   # Points to the global "static" folder in the project root
 ]
 
 
+
 # redirecting linking urls:
+
+# URL where unauthenticated users are redirected
+# This is triggered by @login_required decorator
 LOGIN_URL = '/login/'
+
+# URL where users are redirected after successful login
+# Used by Django's authentication system
 LOGIN_REDIRECT_URL = '/dashboard/'
+
+# URL where users are redirected after changing their password
+# Improves user experience by returning them to profile page
 PASSWORD_CHANGE_REDIRECT_URL = "/dashboard/profile/"
+

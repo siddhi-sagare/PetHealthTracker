@@ -1,64 +1,75 @@
+/* ================= PAGE TITLE ================= */
+/* Main heading of the page */
 .page-title {
-    font-size: 26px;
-    margin-bottom: 20px;
+    font-size: 26px;            /* Large font size for page title */
+    margin-bottom: 20px;        /* Space below the title */
 }
 
-/* FORM CARD */
+/* ================= FORM CARD ================= */
+/* Card container for form layout */
 .form-card {
-    background: white;
-    max-width: 700px;
-    padding: 30px;
-    border-radius: 14px;
-    box-shadow: 0 12px 30px rgba(0,0,0,0.1);
+    background: white;          /* White background for form */
+    max-width: 700px;           /* Limits form width for better readability */
+    padding: 30px;              /* Inner spacing inside the form */
+    border-radius: 14px;        /* Rounded corners for modern UI */
+    box-shadow: 0 12px 30px rgba(0,0,0,0.1); /* Soft shadow effect */
 }
 
+/* Form card heading */
 .form-card h3 {
-    margin-bottom: 20px;
+    margin-bottom: 20px;        /* Space below section heading */
 }
 
-/* FORM GROUP */
+/* ================= FORM GROUP ================= */
+/* Wrapper for each label + input pair */
 .form-group {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 18px;
+    display: flex;              /* Enables flexible layout */
+    flex-direction: column;     /* Stack label and input vertically */
+    margin-bottom: 18px;        /* Space between form fields */
 }
 
+/* Row layout for grouping multiple fields side-by-side */
 .form-row {
-    display: flex;
-    gap: 20px;
+    display: flex;              /* Horizontal alignment */
+    gap: 20px;                  /* Space between fields */
 }
 
+/* Label styling */
 .form-group label {
-    font-weight: bold;
-    margin-bottom: 6px;
+    font-weight: bold;          /* Makes labels prominent */
+    margin-bottom: 6px;         /* Space between label and input */
 }
 
-/* INPUTS */
+/* ================= FORM INPUTS ================= */
+/* Common styles for input, select, and textarea */
 .form-group input,
 .form-group select,
 .form-group textarea {
-    padding: 10px;
-    border-radius: 6px;
-    border: 1px solid #ccc;
-    font-size: 14px;
+    padding: 10px;              /* Inner spacing for better usability */
+    border-radius: 6px;         /* Rounded input corners */
+    border: 1px solid #ccc;     /* Light border */
+    font-size: 14px;            /* Standard input text size */
 }
 
+/* Textarea specific styling */
 .form-group textarea {
-    resize: vertical;
+    resize: vertical;           /* Allows vertical resize only */
 }
 
-/* BUTTON */
+/* ================= SAVE BUTTON ================= */
+/* Primary action button */
 .save-btn {
-    background: #1e88e5;
-    color: white;
-    padding: 12px 20px;
-    border: none;
-    border-radius: 8px;
-    font-size: 15px;
-    cursor: pointer;
-    margin-top: 10px;
+    background: #1e88e5;        /* Primary blue theme color */
+    color: white;               /* White text */
+    padding: 12px 20px;         /* Button spacing */
+    border: none;               /* Removes default border */
+    border-radius: 8px;         /* Rounded button corners */
+    font-size: 15px;            /* Button text size */
+    cursor: pointer;            /* Pointer cursor on hover */
+    margin-top: 10px;           /* Space above the button */
 }
 
+/* Hover effect for save button */
 .save-btn:hover {
-    background: #166dc5;
+    background: #166dc5;        /* Darker blue on hover */
 }

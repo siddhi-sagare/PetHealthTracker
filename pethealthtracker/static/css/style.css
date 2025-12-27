@@ -1,73 +1,84 @@
-/* Global Styles */
+/* ================= GLOBAL STYLES ================= */
+/* Applies default font and background to entire website */
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f7fb;
+    font-family: Arial, sans-serif;     /* Sets default font */
+    margin: 0;                          /* Removes default margin */
+    padding: 0;                         /* Removes default padding */
+    background-color: #f4f7fb;          /* Light background color */
 }
 
-/* Navbar */
+/* ================= NAVBAR ================= */
+/* Top navigation bar */
 .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 50px;
-    background-color: #1e88e5;
-    color: #fff;
+    display: flex;                      /* Horizontal layout */
+    justify-content: space-between;     /* Space between logo and buttons */
+    align-items: center;                /* Vertical centering */
+    padding: 15px 50px;                 /* Inner spacing */
+    background-color: #1e88e5;          /* Primary blue color */
+    color: #fff;                        /* White text */
 }
 
+/* Website logo */
 .navbar .logo {
-    font-size: 30px;
-    font-weight: bold;
+    font-size: 30px;                    /* Large logo text */
+    font-weight: bold;                  /* Bold logo */
 }
 
+/* Navbar buttons (navigation & auth) */
 .navbar .nav-links button,
 .navbar .auth-buttons button {
-    margin-left: 15px;
-    padding: 8px 16px;
-    border: none;
-    border-radius: 8px;
-    background-color: #fff;
-    color: #1e88e5;
-    font-weight: bold;
-    cursor: pointer;
+    margin-left: 15px;                 /* Space between buttons */
+    padding: 8px 16px;                 /* Button padding */
+    border: none;                      /* No border */
+    border-radius: 8px;                /* Rounded corners */
+    background-color: #fff;            /* White background */
+    color: #1e88e5;                    /* Blue text */
+    font-weight: bold;                 /* Bold text */
+    cursor: pointer;                   /* Pointer cursor */
 }
 
+/* Hover effect for navbar buttons */
 .navbar .nav-links button:hover,
 .navbar .auth-buttons button:hover {
-    background-color: #e3f2fd;
+    background-color: #e3f2fd;         /* Light blue hover effect */
 }
 
-/* Landing Section */
+/* ================= LANDING SECTION ================= */
+/* Main hero section */
 .landing {
-    display: flex;
+    display: flex;                      /* Two-column layout */
     justify-content: space-between;
     align-items: center;
-    padding: 60px 50px;
+    padding: 60px 50px;                 /* Section padding */
 }
 
+/* Left content area */
 .landing-left {
-    flex: 1;
+    flex: 1;                            /* Takes equal width */
     padding-right: 30px;
 }
 
+/* Main heading */
 .landing-left h1 {
     font-size: 36px;
     color: #1e88e5;
     margin-bottom: 20px;
 }
 
+/* Tagline text */
 .landing-left p {
     font-size: 18px;
     margin-bottom: 30px;
     color: #555;
 }
 
+/* Feature cards under hero section */
 .feature-cards {
     display: flex;
     gap: 20px;
 }
 
+/* Individual feature card */
 .feature-cards .card {
     flex: 1;
     background-color: #fff;
@@ -78,53 +89,20 @@ body {
     box-shadow: 0 3px 10px rgba(0,0,0,0.1);
 }
 
+/* Right image section */
 .landing-right {
     flex: 1;
 }
 
+/* Landing image */
 .landing-right img {
     width: 100%;
     border-radius: 12px;
     object-fit: cover;
 }
 
-/* Reviews Section */
-.reviews {
-    padding: 50px 20px;
-    background-color: #e3f2fd;
-    text-align: center;
-}
-
-.reviews h2 {
-    font-size: 28px;
-    color: #1e88e5;
-    margin-bottom: 30px;
-}
-
-.review-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-}
-
-.review-slider {
-    display: flex;
-    overflow-x: hidden;
-    gap: 20px;
-    scroll-behavior: smooth;
-}
-
-.review-slider .slide {
-    min-width: 250px;
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-    flex-shrink: 0;
-}
-
-/* Arrow Buttons */
+/* ================= SLIDER ARROWS ================= */
+/* Navigation arrow buttons */
 .arrow {
     background-color: #1e88e5;
     color: #fff;
@@ -135,11 +113,13 @@ body {
     border-radius: 50%;
 }
 
+/* Arrow hover effect */
 .arrow:hover {
     background-color: #1565c0;
 }
 
-/* Footer */
+/* ================= FOOTER ================= */
+/* Footer section */
 footer {
     text-align: center;
     padding: 15px;
@@ -147,24 +127,29 @@ footer {
     color: #fff;
 }
 
+/* ================= FEATURES SECTION ================= */
+/* Features overview page */
 .features-section {
     padding: 50px;
     background-color: #f4f7fb;
     text-align: center;
 }
 
+/* Features heading */
 .features-section h1 {
     font-size: 36px;
     color: #1e88e5;
     margin-bottom: 20px;
 }
 
+/* Features description */
 .features-section p {
     font-size: 18px;
     color: #555;
     margin-bottom: 40px;
 }
 
+/* Feature cards container */
 .features-cards {
     display: flex;
     justify-content: center;
@@ -172,6 +157,7 @@ footer {
     flex-wrap: wrap;
 }
 
+/* Feature card */
 .feature-card {
     flex: 1;
     min-width: 250px;
@@ -182,19 +168,25 @@ footer {
     text-align: center;
 }
 
+/* Feature title */
 .feature-card h3 {
     margin-bottom: 10px;
     color: #1e88e5;
 }
 
+/* Feature description */
 .feature-card p {
     color: #555;
 }
+
+/* ================= HOW IT WORKS ================= */
+/* Process explanation section */
 .how-it-works {
     padding: 60px;
     text-align: center;
 }
 
+/* Steps container */
 .steps {
     display: flex;
     justify-content: center;
@@ -202,6 +194,7 @@ footer {
     margin-top: 40px;
 }
 
+/* Individual step card */
 .step-card {
     background: #fff;
     padding: 20px;
@@ -209,18 +202,23 @@ footer {
     border-radius: 12px;
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
+
+/* ================= CONTACT SECTION ================= */
+/* Contact page container */
 .contact-section {
     max-width: 600px;
     margin: 60px auto;
     text-align: center;
 }
 
+/* Contact form layout */
 .contact-form {
     display: flex;
     flex-direction: column;
     gap: 15px;
 }
 
+/* Contact inputs */
 .contact-form input,
 .contact-form textarea {
     padding: 12px;
@@ -228,6 +226,7 @@ footer {
     border: 1px solid #ccc;
 }
 
+/* Contact submit button */
 .contact-form button {
     background: #2b7cff;
     color: white;
@@ -236,74 +235,16 @@ footer {
     border-radius: 8px;
     cursor: pointer;
 }
-.features-page {
-    padding: 60px;
-    text-align: center;
-}
 
-.features-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 25px;
-    margin-top: 40px;
-}
-
-.feature-card {
-    background: #ffffff;
-    padding: 25px;
-    border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-}
-
-.feature-card h3 {
-    margin-bottom: 10px;
-}
-
-.contact-section {
-    max-width: 600px;
-    margin: 50px auto;
-    text-align: center;
-}
-
-.contact-box {
-    background: #ffffff;
-    padding: 25px;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-}
-
-.form-group {
-    text-align: left;
-    margin-bottom: 15px;
-}
-
-.form-group input,
-.form-group textarea {
-    width: 100%;
-    padding: 10px;
-    border-radius: 8px;
-    border: 1px solid #ccc;
-}
-
-.btn-primary {
-    background: #1e88e5;
-    color: white;
-    padding: 10px 25px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-}
-
-.btn-primary:hover {
-    background: #1e88e5;
-}
-
+/* ================= AUTH SECTION ================= */
+/* Login / Register section */
 .auth-section {
     max-width: 800px;
     margin: 60px auto;
     text-align: center;
 }
 
+/* Authentication card */
 .auth-box {
     max-width: 400px;
     background: white;
@@ -312,12 +253,13 @@ footer {
     box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
+/* Auth redirect link */
 .auth-link {
     margin-top: 15px;
 }
 
+/* Auth link styling */
 .auth-link a {
     color: #1e88e5;
     font-weight: bold;
 }
-

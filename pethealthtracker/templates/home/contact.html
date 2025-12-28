@@ -1,39 +1,73 @@
 {% extends 'home/base.html' %}
+{# Extends the base template which includes navbar and footer #}
 
 {% block title %}Contact Us | Pet Health Tracker{% endblock %}
+{# Sets the browser tab title for the Contact page #}
 
 {% block content %}
+{# Starts the main content section that replaces block in base.html #}
 
 <section class="contact-section">
+    {# Main wrapper section for the Contact Us page #}
 
     <h1>Contact Us</h1>
-    <p>If you have any questions or need help, feel free to reach out.</p>
+    {# Page heading #}
+
+    <p style="color:black;">
+        If you have any questions or need help, feel free to reach out.
+    </p>
+    {# Short description text below heading #}
 
     <div class="contact-box">
+        {# Card-style container for the contact form #}
+
         <form>
+            {# Contact form (frontend-only, no backend handling yet) #}
 
             <div class="form-group">
+                {# Group for name input #}
                 <label>Your Name</label>
-                <input type="text" placeholder="Enter your name" required>
+                {# Label for name field #}
+                <input type="text"
+                       placeholder="Enter your name"
+                       required>
+                {# Text input for user's name #}
             </div>
 
             <div class="form-group">
+                {# Group for email input #}
                 <label>Email</label>
-                <input type="email" placeholder="Enter your email" required>
+                {# Label for email field #}
+                <input type="email"
+                       placeholder="Enter your email"
+                       required>
+                {# Email input field with validation #}
             </div>
 
             <div class="form-group">
+                {# Group for message input #}
                 <label>Message</label>
-                <textarea rows="4" placeholder="Your message" required></textarea>
+                {# Label for message textarea #}
+                <textarea rows="4"
+                          placeholder="Your message"
+                          required></textarea>
+                {# Textarea for user's message #}
             </div>
 
             <button type="submit" class="btn-primary">
                 Send Message
             </button>
+            {# Submit button for contact form #}
 
         </form>
-    </div><br>
+    </div>
+    {# End of contact form box #}
+
+    <br>
+    {# Extra spacing below the contact box #}
 
 </section>
+{# End of contact section #}
 
 {% endblock %}
+{# Ends the content block #}

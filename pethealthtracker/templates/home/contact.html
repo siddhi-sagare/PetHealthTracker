@@ -1,51 +1,39 @@
 {% extends 'home/base.html' %}
-{# Extends the base template for public/home pages (navbar + footer) #}
 
 {% block title %}Contact Us | Pet Health Tracker{% endblock %}
-{# Sets a custom page title for the Contact page #}
 
 {% block content %}
-{# Main content block injected into home/base.html #}
 
 <section class="contact-section">
-    {# Wrapper section for contact page content #}
 
     <h1>Contact Us</h1>
-    {# Page heading #}
-
     <p>If you have any questions or need help, feel free to reach out.</p>
-    {# Short description for users #}
 
     <div class="contact-box">
-        {# Card-style container for the contact form #}
-
         <form>
-            {# Contact form (currently frontend-only, no backend handling) #}
 
             <div class="form-group">
                 <label>Your Name</label>
-                {# Input field for user's name #}
-                <input type="text" placeholder="Enter your name">
+                <input type="text" placeholder="Enter your name" required>
             </div>
 
             <div class="form-group">
                 <label>Email</label>
-                {# Input field for user's email address #}
-                <input type="email" placeholder="Enter your email">
+                <input type="email" placeholder="Enter your email" required>
             </div>
 
             <div class="form-group">
                 <label>Message</label>
-                {# Textarea for user's message or query #}
-                <textarea rows="4" placeholder="Your message"></textarea>
+                <textarea rows="4" placeholder="Your message" required></textarea>
             </div>
 
-            {# Submit button for contact form #}
             <button type="submit" class="btn-primary">
                 Send Message
             </button>
+
         </form>
-    </div>
+    </div><br>
+
 </section>
 
 {% endblock %}

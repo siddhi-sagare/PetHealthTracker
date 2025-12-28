@@ -127,57 +127,54 @@ footer {
     color: #fff;
 }
 
-/* ================= FEATURES SECTION ================= */
-/* Features overview page */
-.features-section {
-    padding: 50px;
-    background-color: #f4f7fb;
+/* ================= FEATURES PAGE (FIXED ALIGNMENT) ================= */
+
+.features-page {
+    min-height: calc(100vh - 120px); /* navbar + footer */
+    padding: 60px 40px;
     text-align: center;
 }
 
-/* Features heading */
-.features-section h1 {
+.features-page h1 {
     font-size: 36px;
     color: #1e88e5;
-    margin-bottom: 20px;
-}
-
-/* Features description */
-.features-section p {
-    font-size: 18px;
-    color: #555;
     margin-bottom: 40px;
 }
 
-/* Feature cards container */
-.features-cards {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
+/* Grid container */
+.features-grid {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
 }
 
 /* Feature card */
-.feature-card {
-    flex: 1;
-    min-width: 250px;
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-    text-align: center;
+.features-grid .feature-card {
+    background: #ffffff;
+    padding: 30px 20px;
+    border-radius: 14px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-/* Feature title */
-.feature-card h3 {
-    margin-bottom: 10px;
+.features-grid .feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+}
+
+.features-grid .feature-card h3 {
     color: #1e88e5;
+    margin-bottom: 10px;
 }
 
-/* Feature description */
-.feature-card p {
+.features-grid .feature-card p {
     color: #555;
+    font-size: 15px;
+    line-height: 1.5;
 }
+
 
 /* ================= HOW IT WORKS ================= */
 /* Process explanation section */
@@ -203,62 +200,131 @@ footer {
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
-/* ================= CONTACT SECTION ================= */
-/* Contact page container */
+/* ================= CONTACT PAGE BOX ================= */
+
 .contact-section {
-    max-width: 600px;
-    margin: 60px auto;
+    min-height: calc(100vh - 120px); /* navbar + footer */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     text-align: center;
 }
 
-/* Contact form layout */
-.contact-form {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
+.contact-box {
+    width: 100%;
+    max-width: 500px;
+    background: #ffffff;
+    padding: 40px 35px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    margin-top: 20px;
 }
 
-/* Contact inputs */
-.contact-form input,
-.contact-form textarea {
+/* Contact form fields */
+.contact-box .form-group {
+    text-align: left;
+    margin-bottom: 16px;
+}
+
+.contact-box label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 6px;
+}
+
+.contact-box input,
+.contact-box textarea {
+    width: 100%;
     padding: 12px;
-    border-radius: 8px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+}
+
+/* Submit button */
+.contact-box .btn-primary {
+    width: 100%;
+    margin-top: 10px;
+}
+
+/* ================= AUTH PAGES PERFECT CENTER ================= */
+
+/* Uses full available height between navbar & footer */
+.main-container {
+    min-height: calc(100vh - 120px); /* navbar + footer */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Auth wrapper */
+.auth-section {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Login/Register heading */
+.auth-section h1 {
+    font-size: 36px;
+    margin-bottom: 25px;
+    color: #1e88e5;
+}
+
+/* Card */
+.auth-box {
+    width: 100%;
+    max-width: 420px;
+    background: #ffffff;
+    padding: 40px 35px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+/* Form layout */
+.form-group {
+    text-align: left;
+    margin-bottom: 16px;
+}
+
+.form-group label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 6px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px;
+    border-radius: 10px;
     border: 1px solid #ccc;
 }
 
-/* Contact submit button */
-.contact-form button {
-    background: #2b7cff;
+/* Primary button */
+.btn-primary {
+    width: 100%;
+    margin-top: 10px;
+    background: #1e88e5;
     color: white;
     padding: 12px;
+    border-radius: 10px;
     border: none;
-    border-radius: 8px;
+    font-weight: bold;
     cursor: pointer;
 }
 
-/* ================= AUTH SECTION ================= */
-/* Login / Register section */
-.auth-section {
-    max-width: 800px;
-    margin: 60px auto;
+.btn-primary:hover {
+    background: #1565c0;
+}
+
+/* Redirect text */
+.auth-link {
+    margin-top: 15px;
     text-align: center;
 }
 
-/* Authentication card */
-.auth-box {
-    max-width: 400px;
-    background: white;
-    padding: 50px;
-    border-radius: 15px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-}
-
-/* Auth redirect link */
-.auth-link {
-    margin-top: 15px;
-}
-
-/* Auth link styling */
 .auth-link a {
     color: #1e88e5;
     font-weight: bold;
